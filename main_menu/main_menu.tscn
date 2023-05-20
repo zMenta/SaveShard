@@ -36,40 +36,50 @@ layout_mode = 2
 size_flags_stretch_ratio = 0.0
 theme_override_constants/separation = 5
 
-[node name="Label" type="Label" parent="MarginContainer/TabContainer/Settings/VBoxContainer"]
+[node name="HSeparator2" type="HSeparator" parent="MarginContainer/TabContainer/Settings/VBoxContainer"]
 layout_mode = 2
-text = "StoneShard Directory:
+
+[node name="StoneDirectory" type="VBoxContainer" parent="MarginContainer/TabContainer/Settings/VBoxContainer"]
+layout_mode = 2
+tooltip_text = "The stoneshard directory. 
+On windows systems, is usually located under:
+
+ C:/Users/USERNAME/AppData/Local/StoneShard
+
 "
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/TabContainer/Settings/VBoxContainer"]
+[node name="Label" type="Label" parent="MarginContainer/TabContainer/Settings/VBoxContainer/StoneDirectory"]
+layout_mode = 2
+text = "StoneShard Directory"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/TabContainer/Settings/VBoxContainer/StoneDirectory"]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="DirButton" type="Button" parent="MarginContainer/TabContainer/Settings/VBoxContainer/HBoxContainer"]
+[node name="DirButton" type="Button" parent="MarginContainer/TabContainer/Settings/VBoxContainer/StoneDirectory/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
 text = "Select Directory"
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/TabContainer/Settings/VBoxContainer"]
+[node name="Label2" type="Label" parent="MarginContainer/TabContainer/Settings/VBoxContainer/StoneDirectory"]
 layout_mode = 2
-theme_override_constants/separation = 10
-
-[node name="Label" type="Label" parent="MarginContainer/TabContainer/Settings/VBoxContainer/HBoxContainer2"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 11
+theme_override_font_sizes/font_size = 13
 text = "Current Directory:"
 
-[node name="DirNameLabel" type="Label" parent="MarginContainer/TabContainer/Settings/VBoxContainer/HBoxContainer2"]
+[node name="DirNameLabel" type="Label" parent="MarginContainer/TabContainer/Settings/VBoxContainer/StoneDirectory"]
+visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 12
-text = "directory not selected!"
+text = "dirname"
 
-[node name="ToolTipLabel" type="Label" parent="MarginContainer/TabContainer/Settings/VBoxContainer"]
+[node name="ToolTipLabel" type="Label" parent="MarginContainer/TabContainer/Settings/VBoxContainer/StoneDirectory"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.972549, 0.882353, 0, 1)
 theme_override_font_sizes/font_size = 12
-text = "Example: C:/Users/USERNAME/AppData/Local/StoneShard
+text = "NO DIRECTORY SELECTED!
+Example: C:/Users/USERNAME/AppData/Local/StoneShard
 "
 
 [node name="HSeparator" type="HSeparator" parent="MarginContainer/TabContainer/Settings/VBoxContainer"]
@@ -84,5 +94,5 @@ file_mode = 2
 access = 2
 show_hidden_files = true
 
-[connection signal="pressed" from="MarginContainer/TabContainer/Settings/VBoxContainer/HBoxContainer/DirButton" to="MarginContainer/TabContainer/Settings" method="_on_dir_button_pressed"]
+[connection signal="pressed" from="MarginContainer/TabContainer/Settings/VBoxContainer/StoneDirectory/HBoxContainer/DirButton" to="MarginContainer/TabContainer/Settings" method="_on_dir_button_pressed"]
 [connection signal="dir_selected" from="MarginContainer/TabContainer/Settings/FileDialog" to="MarginContainer/TabContainer/Settings" method="_on_file_dialog_dir_selected"]
