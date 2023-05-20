@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://drt8wk4erwbun"]
+
+[node name="MainMenu" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+
+[node name="TabContainer" type="TabContainer" parent="MarginContainer"]
+layout_mode = 2
+tab_alignment = 1
+
+[node name="StoneSave" type="CenterContainer" parent="MarginContainer/TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/TabContainer/StoneSave"]
+layout_mode = 2
+text = "THIS STONESAVE"
+
+[node name="Settings" type="CenterContainer" parent="MarginContainer/TabContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/TabContainer/Settings"]
+layout_mode = 2
+text = "THIS IS SETTINGS PANEL"

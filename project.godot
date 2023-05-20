@@ -11,8 +11,16 @@ config_version=5
 [application]
 
 config/name="SaveShard"
+run/main_scene="res://main_menu/main_menu.tscn"
 config/features=PackedStringArray("4.0", "GL Compatibility")
+run/max_fps=24
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=500
+window/size/viewport_height=600
+window/subwindows/embed_subwindows=false
 
 [rendering]
 
