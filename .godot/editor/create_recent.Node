@@ -1,6 +1,12 @@
+HBoxContainer
+HSeparator
+FileDialog
 Label
+Button
+MarginContainer
+VBoxContainer
+OptionButton
 CenterContainer
 TabContainer
 TabBar
 PanelContainer
-MarginContainer

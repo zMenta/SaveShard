@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://drt8wk4erwbun"]
+[gd_scene load_steps=2 format=3 uid="uid://drt8wk4erwbun"]
+
+[ext_resource type="Script" path="res://main_menu/Settings.gd" id="1_0e56h"]
 
 [node name="MainMenu" type="PanelContainer"]
 anchors_preset = 15
@@ -22,9 +24,65 @@ layout_mode = 2
 layout_mode = 2
 text = "THIS STONESAVE"
 
-[node name="Settings" type="CenterContainer" parent="MarginContainer/TabContainer"]
+[node name="Settings" type="MarginContainer" parent="MarginContainer/TabContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 20
+script = ExtResource("1_0e56h")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/TabContainer/Settings"]
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+theme_override_constants/separation = 5
+
+[node name="Label" type="Label" parent="MarginContainer/TabContainer/Settings/VBoxContainer"]
+layout_mode = 2
+text = "StoneShard Directory:
+"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/TabContainer/Settings/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="DirButton" type="Button" parent="MarginContainer/TabContainer/Settings/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+text = "Select Directory"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/TabContainer/Settings/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="MarginContainer/TabContainer/Settings/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 11
+text = "Current Directory:"
+
+[node name="DirNameLabel" type="Label" parent="MarginContainer/TabContainer/Settings/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "directory not selected!"
+
+[node name="ToolTipLabel" type="Label" parent="MarginContainer/TabContainer/Settings/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.972549, 0.882353, 0, 1)
+theme_override_font_sizes/font_size = 12
+text = "Example: C:/Users/USERNAME/AppData/Local/StoneShard
+"
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/TabContainer/Settings/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/TabContainer/Settings"]
-layout_mode = 2
-text = "THIS IS SETTINGS PANEL"
+[node name="FileDialog" type="FileDialog" parent="MarginContainer/TabContainer/Settings"]
+initial_position = 1
+title = "Open a Directory"
+size = Vector2i(676, 508)
+ok_button_text = "Select This Folder"
+file_mode = 2
+access = 2
+show_hidden_files = true
+
+[connection signal="pressed" from="MarginContainer/TabContainer/Settings/VBoxContainer/HBoxContainer/DirButton" to="MarginContainer/TabContainer/Settings" method="_on_dir_button_pressed"]
+[connection signal="dir_selected" from="MarginContainer/TabContainer/Settings/FileDialog" to="MarginContainer/TabContainer/Settings" method="_on_file_dialog_dir_selected"]
