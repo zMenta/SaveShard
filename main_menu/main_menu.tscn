@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://drt8wk4erwbun"]
+[gd_scene load_steps=3 format=3 uid="uid://drt8wk4erwbun"]
 
 [ext_resource type="Script" path="res://main_menu/Settings.gd" id="1_0e56h"]
+[ext_resource type="Script" path="res://main_menu/StoneSave.gd" id="1_ojeiy"]
 
 [node name="MainMenu" type="PanelContainer"]
 anchors_preset = 15
@@ -22,10 +23,25 @@ theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 30
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 30
+script = ExtResource("1_ojeiy")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/TabContainer/StoneSave"]
 layout_mode = 2
 theme_override_constants/separation = 5
+
+[node name="Label" type="Label" parent="MarginContainer/TabContainer/StoneSave/VBoxContainer"]
+layout_mode = 2
+text = "Current Character"
+
+[node name="OptionButton" type="OptionButton" parent="MarginContainer/TabContainer/StoneSave/VBoxContainer"]
+layout_mode = 2
+
+[node name="ErrorLabel" type="Label" parent="MarginContainer/TabContainer/StoneSave/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0.972549, 0.00784314, 0, 1)
+theme_override_font_sizes/font_size = 14
+text = "Couldn't load. Make sure the StoneShard directory is set correctly."
 
 [node name="Settings" type="MarginContainer" parent="MarginContainer/TabContainer"]
 visible = false
@@ -158,6 +174,7 @@ file_mode = 2
 access = 2
 show_hidden_files = true
 
+[connection signal="tab_changed" from="MarginContainer/TabContainer" to="MarginContainer/TabContainer/StoneSave" method="_on_tab_container_tab_changed"]
 [connection signal="pressed" from="MarginContainer/TabContainer/Settings/VBoxContainer/ClearData" to="MarginContainer/TabContainer/Settings" method="_on_clear_data_pressed"]
 [connection signal="pressed" from="MarginContainer/TabContainer/Settings/VBoxContainer/StoneDirectory/HBoxContainer/DirButton" to="MarginContainer/TabContainer/Settings" method="_on_dir_button_pressed"]
 [connection signal="pressed" from="MarginContainer/TabContainer/Settings/VBoxContainer/BackupDirectory/HBoxContainer/SaveDirButton" to="MarginContainer/TabContainer/Settings" method="_on_save_dir_button_pressed"]
