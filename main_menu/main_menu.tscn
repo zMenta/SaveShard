@@ -21,6 +21,7 @@ layout_mode = 2
 tab_alignment = 1
 
 [node name="StoneSave" type="MarginContainer" parent="MarginContainer/TabContainer"]
+visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 30
@@ -175,7 +176,6 @@ text = "Bottom Right"
 [node name="SaveWidget" parent="MarginContainer/TabContainer/StoneSave/VBoxContainer" instance=ExtResource("3_0pxf3")]
 
 [node name="Settings" type="MarginContainer" parent="MarginContainer/TabContainer"]
-visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 30
@@ -192,7 +192,7 @@ theme_override_constants/separation = 5
 layout_mode = 2
 size_flags_horizontal = 8
 theme_override_font_sizes/font_size = 13
-text = "Clear Data"
+text = "Set Default Settings"
 
 [node name="HSeparator2" type="HSeparator" parent="MarginContainer/TabContainer/Settings/VBoxContainer"]
 layout_mode = 2
@@ -248,7 +248,6 @@ Example: C:/Users/USERNAME/AppData/Local/StoneShard
 layout_mode = 2
 
 [node name="BackupDirectory" type="VBoxContainer" parent="MarginContainer/TabContainer/Settings/VBoxContainer"]
-visible = false
 layout_mode = 2
 tooltip_text = "The save directory. 
 Location where the backups will be saved.
@@ -278,27 +277,10 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 13
 text = "Directory:"
 
-[node name="SaveDirNameLabel" type="Label" parent="MarginContainer/TabContainer/Settings/VBoxContainer/BackupDirectory/HBoxContainer2"]
+[node name="SaveDirName" type="Label" parent="MarginContainer/TabContainer/Settings/VBoxContainer/BackupDirectory"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 10
-text = "dirnamegasdffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
-visible_characters = 100
-visible_ratio = 0.970874
-
-[node name="Label" type="Label" parent="MarginContainer/TabContainer/Settings/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 8
-text = "Settings and save data are being saved at:"
-
-[node name="SaveDirNameLabel2" type="Label" parent="MarginContainer/TabContainer/Settings/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 8
-theme_override_font_sizes/font_size = 10
-text = "dirnaaaaaaaaaaaaamedirnaaaaaaaaaaaaamedirnaaaedirnaaaaaaaaaaaaamedirnaaaaaaaaaaaaaaaaaaaaaaaaa"
-visible_characters = 80
-visible_ratio = 0.851064
+text = "directory name"
 
 [node name="HSeparator3" type="HSeparator" parent="MarginContainer/TabContainer/Settings/VBoxContainer"]
 layout_mode = 2

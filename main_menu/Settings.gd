@@ -1,7 +1,7 @@
 extends MarginContainer
 
 @onready var dir_name_label := $VBoxContainer/StoneDirectory/HBoxContainer2/DirNameLabel
-@onready var save_dir_name := $VBoxContainer/BackupDirectory/HBoxContainer2/SaveDirNameLabel
+@onready var save_dir_name := $VBoxContainer/BackupDirectory/SaveDirName
 @onready var stone_file_dialog := $StoneDirectory
 @onready var save_file_dialog := $SaveDirectory
 @onready var warning_label := $VBoxContainer/StoneDirectory/WarningLabel
@@ -16,7 +16,6 @@ func _load_config() -> void:
 	dir_name_label.hide()
 	warning_label.show()
 	save_dir_name.text = ProjectSettings.globalize_path("user://")
-	$VBoxContainer/SaveDirNameLabel2.text = ProjectSettings.globalize_path("user://")
 	
 	if Config.load_data() != OK:
 		return
@@ -29,9 +28,9 @@ func _load_config() -> void:
 		dir_name_label.show()
 		warning_label.hide()			
 		
-	if save_directory != null:
-		save_dir_name.text = save_directory
-		save_file_dialog.current_dir = save_directory
+	if save_directory == "user://":
+		save_dir_name.text = ProjectSettings.globalize_path("user://")
+		save_file_dialog.current_dir = ProjectSettings.globalize_path("user://")
 
 
 func _on_dir_button_pressed():
