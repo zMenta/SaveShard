@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://drt8wk4erwbun"]
+[gd_scene load_steps=6 format=3 uid="uid://drt8wk4erwbun"]
 
 [ext_resource type="Script" path="res://main_menu/Settings.gd" id="1_0e56h"]
 [ext_resource type="Script" path="res://main_menu/StoneSave.gd" id="1_ojeiy"]
+[ext_resource type="Script" path="res://main_menu/Actions.gd" id="2_m7rd4"]
 [ext_resource type="Script" path="res://main_menu/FloatingWindow.gd" id="2_vf80d"]
 [ext_resource type="PackedScene" uid="uid://dqhll4wtf0ak6" path="res://save_widget/save_widget.tscn" id="3_0pxf3"]
 
@@ -58,6 +59,7 @@ layout_mode = 2
 layout_mode = 2
 tooltip_text = "Actions that you use.
 You can also use the floating window options."
+script = ExtResource("2_m7rd4")
 
 [node name="Label" type="Label" parent="MarginContainer/TabContainer/StoneSave/VBoxContainer/Actions"]
 layout_mode = 2
@@ -66,19 +68,20 @@ horizontal_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/TabContainer/StoneSave/VBoxContainer/Actions"]
 layout_mode = 2
-theme_override_constants/separation = 45
+theme_override_constants/separation = 25
 alignment = 1
 
-[node name="Button" type="Button" parent="MarginContainer/TabContainer/StoneSave/VBoxContainer/Actions/HBoxContainer"]
+[node name="SaveButton" type="Button" parent="MarginContainer/TabContainer/StoneSave/VBoxContainer/Actions/HBoxContainer"]
 layout_mode = 2
 text = "Save"
 
-[node name="Button2" type="Button" parent="MarginContainer/TabContainer/StoneSave/VBoxContainer/Actions/HBoxContainer"]
+[node name="InsertButton" type="Button" parent="MarginContainer/TabContainer/StoneSave/VBoxContainer/Actions/HBoxContainer"]
 layout_mode = 2
 text = "InsertSave"
 
 [node name="LogLabel" type="Label" parent="MarginContainer/TabContainer/StoneSave/VBoxContainer/Actions"]
 layout_mode = 2
+text = "Action Log"
 horizontal_alignment = 1
 
 [node name="HSeparator2" type="HSeparator" parent="MarginContainer/TabContainer/StoneSave/VBoxContainer"]
@@ -151,7 +154,7 @@ text = "Bottom Left"
 layout_mode = 2
 text = "Bottom Right"
 
-[node name="SaveWidget" parent="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow" instance=ExtResource("3_0pxf3")]
+[node name="SaveWidget" parent="MarginContainer/TabContainer/StoneSave/VBoxContainer" instance=ExtResource("3_0pxf3")]
 
 [node name="Settings" type="MarginContainer" parent="MarginContainer/TabContainer"]
 visible = false
@@ -285,14 +288,15 @@ access = 2
 show_hidden_files = true
 
 [connection signal="tab_changed" from="MarginContainer/TabContainer" to="MarginContainer/TabContainer/StoneSave" method="_on_tab_container_tab_changed"]
+[connection signal="pressed" from="MarginContainer/TabContainer/StoneSave/VBoxContainer/Actions/HBoxContainer/SaveButton" to="MarginContainer/TabContainer/StoneSave/VBoxContainer/Actions" method="_on_save_button_pressed"]
 [connection signal="pressed" from="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow/WindowButton" to="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow" method="_on_window_button_pressed"]
 [connection signal="toggled" from="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow/WindowContainer/HBoxContainer/BordlessCheck" to="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow" method="_on_bordless_check_toggled"]
 [connection signal="pressed" from="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow/WindowContainer/HBoxContainer/VBoxContainer/GridContainer/TopLeft" to="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow" method="_on_top_left_pressed"]
 [connection signal="pressed" from="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow/WindowContainer/HBoxContainer/VBoxContainer/GridContainer/TopRight" to="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow" method="_on_top_right_pressed"]
 [connection signal="pressed" from="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow/WindowContainer/HBoxContainer/VBoxContainer/GridContainer/BottomLeft" to="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow" method="_on_bottom_left_pressed"]
 [connection signal="pressed" from="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow/WindowContainer/HBoxContainer/VBoxContainer/GridContainer/BottomRight" to="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow" method="_on_bottom_right_pressed"]
-[connection signal="close_requested" from="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow/SaveWidget" to="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow" method="_on_save_widget_close_requested"]
-[connection signal="visibility_changed" from="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow/SaveWidget" to="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow" method="_on_save_widget_visibility_changed"]
+[connection signal="close_requested" from="MarginContainer/TabContainer/StoneSave/VBoxContainer/SaveWidget" to="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow" method="_on_save_widget_close_requested"]
+[connection signal="visibility_changed" from="MarginContainer/TabContainer/StoneSave/VBoxContainer/SaveWidget" to="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow" method="_on_save_widget_visibility_changed"]
 [connection signal="pressed" from="MarginContainer/TabContainer/Settings/VBoxContainer/ClearData" to="MarginContainer/TabContainer/Settings" method="_on_clear_data_pressed"]
 [connection signal="pressed" from="MarginContainer/TabContainer/Settings/VBoxContainer/StoneDirectory/HBoxContainer/DirButton" to="MarginContainer/TabContainer/Settings" method="_on_dir_button_pressed"]
 [connection signal="pressed" from="MarginContainer/TabContainer/Settings/VBoxContainer/BackupDirectory/HBoxContainer/SaveDirButton" to="MarginContainer/TabContainer/Settings" method="_on_save_dir_button_pressed"]

@@ -1,6 +1,6 @@
 extends VBoxContainer
 
-@onready var window := $SaveWidget
+@onready var window := $"../SaveWidget"
 @onready var window_container := $WindowContainer
 @onready var window_button := $WindowButton
 
@@ -39,7 +39,14 @@ func _on_save_widget_close_requested():
 
 
 func _on_bordless_check_toggled(button_pressed):
+	var window_padding: int = 25
 	window.borderless = button_pressed
+	
+	# Adjust window size, so buttons are not hidden
+	if button_pressed == false:
+		window.size.y += window_padding
+	else:
+		window.size.y -= window_padding
 
 
 func _on_top_left_pressed():

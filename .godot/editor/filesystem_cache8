@@ -1,8 +1,13 @@
 2a60927148abd1d33b818b535e306557
-::res://::1684628716
+::res://::1684686215
 icon.svg::CompressedTexture2D::2095437183463130384::1684619635::1684619640::1::::<><>::
 LICENSE.md::TextFile::-1::1684619742::0::1::::<><>::
 README.md::TextFile::-1::1684619742::0::1::::<><>::
-::res://main_menu/::1684628557
-main_menu.tscn::PackedScene::8393739088718345913::1684628557::0::1::::<><>::res://main_menu/Settings.gd
-Settings.gd::GDScript::-1::1684628471::0::1::::<>MarginContainer<>::
+::res://main_menu/::1684651124
+Actions.gd::GDScript::-1::1684646956::0::1::::<>VBoxContainer<>::
+FloatingWindow.gd::GDScript::-1::1684645594::0::1::::<>VBoxContainer<>::
+main_menu.tscn::PackedScene::8393739088718345913::1684651124::0::1::::<><>::res://main_menu/Settings.gd<>res://main_menu/StoneSave.gd<>res://main_menu/Actions.gd<>res://main_menu/FloatingWindow.gd<>uid://dqhll4wtf0ak6
+Settings.gd::GDScript::-1::1684630914::0::1::::<>MarginContainer<>::
+StoneSave.gd::GDScript::-1::1684643244::0::1::::<>MarginContainer<>::
+::res://save_widget/::1684651124
+save_widget.tscn::PackedScene::8297423282253413739::1684651124::0::1::::<><>::
