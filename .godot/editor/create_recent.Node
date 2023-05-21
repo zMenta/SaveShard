@@ -1,11 +1,12 @@
+HBoxContainer
+Label
+HSlider
+VBoxContainer
 MarginContainer
 CenterContainer
 Panel
 Window
 VSeparator
-VBoxContainer
-Label
-HBoxContainer
 HSeparator
 Button
 GridContainer

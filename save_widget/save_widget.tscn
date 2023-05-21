@@ -1,4 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://dqhll4wtf0ak6"]
+[gd_scene load_steps=3 format=3 uid="uid://dqhll4wtf0ak6"]
+
+[ext_resource type="Script" path="res://save_widget/save_widget.gd" id="1_ugtcg"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ygeif"]
 bg_color = Color(0.00392157, 0, 0.12549, 0.478431)
@@ -11,6 +13,7 @@ visible = false
 unresizable = true
 borderless = true
 always_on_top = true
+script = ExtResource("1_ugtcg")
 
 [node name="Panel" type="Panel" parent="."]
 anchors_preset = 15

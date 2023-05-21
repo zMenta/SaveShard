@@ -120,10 +120,28 @@ layout_mode = 2
 layout_mode = 2
 theme_override_constants/separation = 60
 
-[node name="BordlessCheck" type="CheckButton" parent="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow/WindowContainer/HBoxContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow/WindowContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="BordlessCheck" type="CheckButton" parent="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow/WindowContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
 button_pressed = true
 text = "Bordless"
+
+[node name="DummyLabel" type="Label" parent="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow/WindowContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="WidgetScaleLabel" type="Label" parent="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow/WindowContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Widget Scale: 1.0"
+
+[node name="HSlider" type="HSlider" parent="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow/WindowContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+min_value = 0.4
+max_value = 3.0
+step = 0.2
+value = 1.0
+tick_count = 5
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow/WindowContainer/HBoxContainer"]
 layout_mode = 2
@@ -290,7 +308,8 @@ show_hidden_files = true
 [connection signal="tab_changed" from="MarginContainer/TabContainer" to="MarginContainer/TabContainer/StoneSave" method="_on_tab_container_tab_changed"]
 [connection signal="pressed" from="MarginContainer/TabContainer/StoneSave/VBoxContainer/Actions/HBoxContainer/SaveButton" to="MarginContainer/TabContainer/StoneSave/VBoxContainer/Actions" method="_on_save_button_pressed"]
 [connection signal="pressed" from="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow/WindowButton" to="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow" method="_on_window_button_pressed"]
-[connection signal="toggled" from="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow/WindowContainer/HBoxContainer/BordlessCheck" to="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow" method="_on_bordless_check_toggled"]
+[connection signal="toggled" from="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow/WindowContainer/HBoxContainer/VBoxContainer2/BordlessCheck" to="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow" method="_on_bordless_check_toggled"]
+[connection signal="value_changed" from="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow/WindowContainer/HBoxContainer/VBoxContainer2/HSlider" to="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow" method="_on_h_slider_value_changed"]
 [connection signal="pressed" from="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow/WindowContainer/HBoxContainer/VBoxContainer/GridContainer/TopLeft" to="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow" method="_on_top_left_pressed"]
 [connection signal="pressed" from="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow/WindowContainer/HBoxContainer/VBoxContainer/GridContainer/TopRight" to="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow" method="_on_top_right_pressed"]
 [connection signal="pressed" from="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow/WindowContainer/HBoxContainer/VBoxContainer/GridContainer/BottomLeft" to="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow" method="_on_bottom_left_pressed"]

@@ -3,6 +3,7 @@ extends VBoxContainer
 @onready var window := $"../SaveWidget"
 @onready var window_container := $WindowContainer
 @onready var window_button := $WindowButton
+@onready var window_scale_label := $WindowContainer/HBoxContainer/VBoxContainer2/WidgetScaleLabel
 
 var screen_size: Vector2i
 var screen_zero_position: Vector2i
@@ -63,3 +64,8 @@ func _on_bottom_left_pressed():
 
 func _on_bottom_right_pressed():
 	window.position = Vector2i(screen_zero_position.x + screen_size.x - window.size.x, screen_zero_position.y + screen_size.y - window.size.y)
+
+
+func _on_h_slider_value_changed(value):
+	window.scale_size(value)
+	window_scale_label.text = "Widget Scale: %1.1f" % value
