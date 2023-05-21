@@ -10,14 +10,18 @@ func _ready():
 
 
 func create_config_default() -> void:
-	data.set_value("settings", "stoneshard_directory", null)
+	data.set_value("settings", "stoneshard_directory", "")
 	data.set_value("settings", "save_directory", "user://")
 	data.save(config_path)
-
 
 func set_value(section: String, key: String , value: Variant) -> void:		
 	data.set_value(section, key, value)
 	
+func get_value(section: String, key: String, default_value: Variant = null) -> Variant:
+	return data.get_value(section, key, default_value)
+	
+func load_data() -> Error:
+	return data.load(config_path)
 
 func save() -> Error:
 	return data.save(config_path)

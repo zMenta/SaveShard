@@ -16,8 +16,7 @@ func _load_config() -> void:
 	var status = config.load(config_path)
 	character_option_button.clear()
 
-	if status != OK:
-		return
+	if status != OK: return
 
 	var stone_path = config.get_value("settings", "stoneshard_directory")
 	var dirs = DirAccess.get_directories_at(stone_path + prefix)
