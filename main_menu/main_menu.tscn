@@ -135,19 +135,19 @@ horizontal_alignment = 1
 layout_mode = 2
 columns = 2
 
-[node name="Button" type="Button" parent="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow/WindowContainer/HBoxContainer/VBoxContainer/GridContainer"]
+[node name="TopLeft" type="Button" parent="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow/WindowContainer/HBoxContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
 text = "Top Left"
 
-[node name="Button2" type="Button" parent="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow/WindowContainer/HBoxContainer/VBoxContainer/GridContainer"]
+[node name="TopRight" type="Button" parent="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow/WindowContainer/HBoxContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
 text = "Top Right"
 
-[node name="Button3" type="Button" parent="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow/WindowContainer/HBoxContainer/VBoxContainer/GridContainer"]
+[node name="BottomLeft" type="Button" parent="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow/WindowContainer/HBoxContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
 text = "Bottom Left"
 
-[node name="Button4" type="Button" parent="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow/WindowContainer/HBoxContainer/VBoxContainer/GridContainer"]
+[node name="BottomRight" type="Button" parent="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow/WindowContainer/HBoxContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
 text = "Bottom Right"
 
@@ -287,6 +287,10 @@ show_hidden_files = true
 [connection signal="tab_changed" from="MarginContainer/TabContainer" to="MarginContainer/TabContainer/StoneSave" method="_on_tab_container_tab_changed"]
 [connection signal="pressed" from="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow/WindowButton" to="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow" method="_on_window_button_pressed"]
 [connection signal="toggled" from="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow/WindowContainer/HBoxContainer/BordlessCheck" to="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow" method="_on_bordless_check_toggled"]
+[connection signal="pressed" from="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow/WindowContainer/HBoxContainer/VBoxContainer/GridContainer/TopLeft" to="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow" method="_on_top_left_pressed"]
+[connection signal="pressed" from="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow/WindowContainer/HBoxContainer/VBoxContainer/GridContainer/TopRight" to="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow" method="_on_top_right_pressed"]
+[connection signal="pressed" from="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow/WindowContainer/HBoxContainer/VBoxContainer/GridContainer/BottomLeft" to="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow" method="_on_bottom_left_pressed"]
+[connection signal="pressed" from="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow/WindowContainer/HBoxContainer/VBoxContainer/GridContainer/BottomRight" to="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow" method="_on_bottom_right_pressed"]
 [connection signal="close_requested" from="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow/SaveWidget" to="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow" method="_on_save_widget_close_requested"]
 [connection signal="visibility_changed" from="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow/SaveWidget" to="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow" method="_on_save_widget_visibility_changed"]
 [connection signal="pressed" from="MarginContainer/TabContainer/Settings/VBoxContainer/ClearData" to="MarginContainer/TabContainer/Settings" method="_on_clear_data_pressed"]
