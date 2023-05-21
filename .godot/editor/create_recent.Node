@@ -1,12 +1,12 @@
-Button
+Label
 VBoxContainer
+Button
 Control
 PanelContainer
 Container
 HBoxContainer
 HSeparator
 FileDialog
-Label
 MarginContainer
 OptionButton
 CenterContainer
