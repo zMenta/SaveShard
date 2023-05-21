@@ -1,13 +1,10 @@
 extends MarginContainer
 
 @onready var dir_name_label := $VBoxContainer/StoneDirectory/HBoxContainer2/DirNameLabel
-@onready var save_dir_name := $VBoxContainer/BackupDirectory/HBoxContainer2/SaveDirNameLabel
+@onready var save_dir_name := $VBoxContainer/BackupDirectory/SaveDirName
 @onready var stone_file_dialog := $StoneDirectory
 @onready var save_file_dialog := $SaveDirectory
 @onready var warning_label := $VBoxContainer/StoneDirectory/WarningLabel
-
-var config := ConfigFile.new()
-var config_path := "user://settings.cfg"
 
 
 func _ready():
@@ -19,24 +16,24 @@ func _load_config() -> void:
 	dir_name_label.hide()
 	warning_label.show()
 	save_dir_name.text = ProjectSettings.globalize_path("user://")
-	$VBoxContainer/SaveDirNameLabel2.text = ProjectSettings.globalize_path("user://")
-	print(ProjectSettings.globalize_path("user://"))
+	save_dir_name.text = ProjectSettings.globalize_path("user://")
+	save_file_dialog.current_dir = ProjectSettings.globalize_path("user://")
 	
-	# Load Config
-	if FileAccess.file_exists(config_path):
-		config.load(config_path)
-		var stoneshard_directory = config.get_value("settings", "stoneshard_directory", null)
-		var save_directory = config.get_value("settings", "save_directory", null)
-		if stoneshard_directory != null:
-			dir_name_label.text = stoneshard_directory
-			stone_file_dialog.current_dir = stoneshard_directory
-			dir_name_label.show()
-			warning_label.hide()			
-			
-		if save_directory != null:
-			save_dir_name.text = save_directory
-			save_file_dialog.current_dir = save_directory
-
+	if Config.load_data() != OK:
+		return
+		
+	var stoneshard_directory = Config.get_value("settings", "stoneshard_directory")
+	var save_directory = Config.get_value("settings", "save_directory")
+	if stoneshard_directory != "":
+		dir_name_label.text = stoneshard_directory
+		stone_file_dialog.current_dir = stoneshard_directory
+		dir_name_label.show()
+		warning_label.hide()			
+		
+	if save_directory != "user://":
+		save_dir_name.text = save_directory
+		save_file_dialog.current_dir = save_directory
+	
 
 
 func _on_dir_button_pressed():
@@ -49,8 +46,8 @@ func _on_save_dir_button_pressed():
 	
 func _on_file_dialog_dir_selected(dir):
 	dir_name_label.text = dir
-	config.set_value("settings", "stoneshard_directory", dir)
-	config.save(config_path)
+	Config.set_value("settings", "stoneshard_directory", dir)
+	Config.save()
 	
 	dir_name_label.show()
 	warning_label.hide()
@@ -58,14 +55,13 @@ func _on_file_dialog_dir_selected(dir):
 
 func _on_save_directory_dir_selected(dir):
 	save_dir_name.text = dir
-	config.set_value("settings", "save_directory", dir)
-	config.save(config_path)
+	Config.set_value("settings", "save_directory", dir)
+	Config.save()
 
 
 func _on_clear_data_pressed():
-	if FileAccess.file_exists(config_path):
-		DirAccess.remove_absolute(config_path)
-		_load_config()
+	Config.create_config_default()
+	_load_config()
 
 
 
