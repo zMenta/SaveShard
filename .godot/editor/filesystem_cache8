@@ -1,7 +1,8 @@
 2a60927148abd1d33b818b535e306557
-::res://::1684619936
+::res://::1684620122
 icon.svg::CompressedTexture2D::2095437183463130384::1684619635::1684619640::1::::<><>::
 LICENSE.md::TextFile::-1::1684619742::0::1::::<><>::
 README.md::TextFile::-1::1684619742::0::1::::<><>::
-::res://scenes/::1684619936
-main_menu.tscn::PackedScene::8393739088718345913::1684619949::0::1::::<><>::
+::res://main_menu/::1684625559
+main_menu.tscn::PackedScene::8393739088718345913::1684625836::0::1::::<><>::res://main_menu/Settings.gd
+Settings.gd::GDScript::-1::1684625836::0::1::::<>MarginContainer<>::
