@@ -11,7 +11,7 @@ func _ready():
 
 	if FileAccess.file_exists(config_path):
 		config.load(config_path)
-		
+
 
 func _on_save_button_pressed():
 	pass
