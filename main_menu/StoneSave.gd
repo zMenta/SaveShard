@@ -31,7 +31,9 @@ func _load_config() -> void:
 	for dir in dirs:
 		var img = Image.load_from_file(stone_path + prefix + "/" + dir + "/exitsave_1/preview.png")
 		if img == null:
-			return
+			img = Image.load_from_file(stone_path + prefix + "/" + dir + "/autosave_1/preview.png")
+			if img == null:
+				return
 		
 		var tex = ImageTexture.create_from_image(img)
 		tex.set_size_override(tex.get_size() * 0.6)

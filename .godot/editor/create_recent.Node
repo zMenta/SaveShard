@@ -1,8 +1,11 @@
-Label
-Button
-HBoxContainer
+VSeparator
 VBoxContainer
+Label
+HBoxContainer
 HSeparator
+Button
+GridContainer
+CheckButton
 OptionButton
 MarginContainer
 Control
