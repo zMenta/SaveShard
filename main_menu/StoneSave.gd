@@ -1,7 +1,7 @@
 extends MarginContainer
 
-@onready var character_option_button := $VBoxContainer/OptionButton
-@onready var error_label := $VBoxContainer/ErrorLabel
+@onready var character_option_button := $VBoxContainer/CharacterSelection/OptionButton
+@onready var error_label := $ErrorLabel
 
 var prefix := "/characters_v1"
 var config_path := "user://settings.cfg"
@@ -12,6 +12,7 @@ func _ready():
 
 func _load_config() -> void:
 	error_label.show()
+	$VBoxContainer.hide()
 	var status = config.load(config_path)
 	character_option_button.clear()
 
@@ -21,12 +22,17 @@ func _load_config() -> void:
 	var stone_path = config.get_value("settings", "stoneshard_directory")
 	var dirs = DirAccess.get_directories_at(stone_path + prefix)
 	
+	if len(dirs) != 0:
+		$VBoxContainer.show()
+		error_label.hide()
+	
+	character_option_button.clear()
+	## Verify other possible paths, for exitsave and normal save.
 	for dir in dirs:
 		var img = Image.load_from_file(stone_path + prefix + "/" + dir + "/exitsave_1/preview.png")
 		if img == null:
 			return
 		
-		error_label.hide()
 		var tex = ImageTexture.create_from_image(img)
 		tex.set_size_override(tex.get_size() * 0.6)
 		character_option_button.add_icon_item(tex, dir)
