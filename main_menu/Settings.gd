@@ -20,7 +20,6 @@ func _load_config() -> void:
 	warning_label.show()
 	save_dir_name.text = ProjectSettings.globalize_path("user://")
 	$VBoxContainer/SaveDirNameLabel2.text = ProjectSettings.globalize_path("user://")
-	print(ProjectSettings.globalize_path("user://"))
 	
 	# Load Config
 	if FileAccess.file_exists(config_path):
