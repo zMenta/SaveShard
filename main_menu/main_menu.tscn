@@ -321,11 +321,18 @@ file_mode = 2
 access = 2
 show_hidden_files = true
 
-[node name="Label" type="Label" parent="MarginContainer"]
+[node name="AuthorLabel" type="Label" parent="MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 8
 theme_override_font_sizes/font_size = 10
 text = " Created by zMenta"
+
+[node name="VersionLabel" type="Label" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 10
+text = "V 0.0 "
 
 [connection signal="tab_changed" from="MarginContainer/TabContainer" to="MarginContainer/TabContainer/StoneSave" method="_on_tab_container_tab_changed"]
 [connection signal="pressed" from="MarginContainer/TabContainer/StoneSave/VBoxContainer/Actions/HBoxContainer/SaveButton" to="MarginContainer/TabContainer/StoneSave/VBoxContainer/Actions" method="_on_save_button_pressed"]
