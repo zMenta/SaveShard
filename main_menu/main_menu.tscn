@@ -93,7 +93,7 @@ script = ExtResource("2_vf80d")
 
 [node name="Label" type="Label" parent="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow"]
 layout_mode = 2
-text = "Floating Window"
+text = "Floating Window Widget"
 horizontal_alignment = 1
 
 [node name="WindowButton" type="Button" parent="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow"]
