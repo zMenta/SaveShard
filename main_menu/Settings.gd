@@ -16,6 +16,8 @@ func _load_config() -> void:
 	dir_name_label.hide()
 	warning_label.show()
 	save_dir_name.text = ProjectSettings.globalize_path("user://")
+	save_dir_name.text = ProjectSettings.globalize_path("user://")
+	save_file_dialog.current_dir = ProjectSettings.globalize_path("user://")
 	
 	if Config.load_data() != OK:
 		return
@@ -28,9 +30,10 @@ func _load_config() -> void:
 		dir_name_label.show()
 		warning_label.hide()			
 		
-	if save_directory == "user://":
-		save_dir_name.text = ProjectSettings.globalize_path("user://")
-		save_file_dialog.current_dir = ProjectSettings.globalize_path("user://")
+	if save_directory != "user://":
+		save_dir_name.text = save_directory
+		save_file_dialog.current_dir = save_directory
+	
 
 
 func _on_dir_button_pressed():

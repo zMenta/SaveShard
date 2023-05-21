@@ -2,5 +2,3 @@ res://save_widget/save_widget.tscn
 res://main_menu/main_menu.tscn
 res://main_menu/Actions.gd
 res://main_menu/Settings.gd
-res://config_autoload/config.gd
-res://main_menu/StoneSave.gd

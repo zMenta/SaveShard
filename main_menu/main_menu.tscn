@@ -21,7 +21,6 @@ layout_mode = 2
 tab_alignment = 1
 
 [node name="StoneSave" type="MarginContainer" parent="MarginContainer/TabContainer"]
-visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 30
@@ -176,6 +175,7 @@ text = "Bottom Right"
 [node name="SaveWidget" parent="MarginContainer/TabContainer/StoneSave/VBoxContainer" instance=ExtResource("3_0pxf3")]
 
 [node name="Settings" type="MarginContainer" parent="MarginContainer/TabContainer"]
+visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 30
