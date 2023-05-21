@@ -7,12 +7,9 @@ extends MarginContainer
 @onready var warning_label := $VBoxContainer/StoneDirectory/WarningLabel
 
 var config := ConfigFile.new()
-var config_path := "user://settings.cfg"
-
 
 func _ready():
 	_load_config()
-
 
 func _load_config() -> void:
 	# Defaults 
@@ -21,20 +18,18 @@ func _load_config() -> void:
 	save_dir_name.text = ProjectSettings.globalize_path("user://")
 	$VBoxContainer/SaveDirNameLabel2.text = ProjectSettings.globalize_path("user://")
 	
-	# Load Config
-	if FileAccess.file_exists(config_path):
-		config.load(config_path)
-		var stoneshard_directory = config.get_value("settings", "stoneshard_directory", null)
-		var save_directory = config.get_value("settings", "save_directory", null)
-		if stoneshard_directory != null:
-			dir_name_label.text = stoneshard_directory
-			stone_file_dialog.current_dir = stoneshard_directory
-			dir_name_label.show()
-			warning_label.hide()			
-			
-		if save_directory != null:
-			save_dir_name.text = save_directory
-			save_file_dialog.current_dir = save_directory
+	config = Config.config_load()
+	var stoneshard_directory = config.get_value("settings", "stoneshard_directory", null)
+	var save_directory = config.get_value("settings", "save_directory", null)
+	if stoneshard_directory != null:
+		dir_name_label.text = stoneshard_directory
+		stone_file_dialog.current_dir = stoneshard_directory
+		dir_name_label.show()
+		warning_label.hide()			
+		
+	if save_directory != null:
+		save_dir_name.text = save_directory
+		save_file_dialog.current_dir = save_directory
 
 
 
