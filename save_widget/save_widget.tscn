@@ -1,0 +1,33 @@
+[gd_scene load_steps=2 format=3 uid="uid://dqhll4wtf0ak6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ygeif"]
+bg_color = Color(0.00392157, 0, 0.12549, 0.478431)
+
+[node name="SaveWidget" type="Window"]
+initial_position = 1
+title = "save widget"
+size = Vector2i(140, 38)
+visible = false
+unresizable = true
+borderless = true
+always_on_top = true
+
+[node name="Panel" type="Panel" parent="."]
+offset_right = 143.0
+offset_bottom = 39.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ygeif")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
+offset_top = 4.0
+offset_right = 138.0
+offset_bottom = 35.0
+
+[node name="Button" type="Button" parent="Panel/HBoxContainer"]
+layout_mode = 2
+text = "Save"
+
+[node name="Button2" type="Button" parent="Panel/HBoxContainer"]
+layout_mode = 2
+text = "InsertSave"

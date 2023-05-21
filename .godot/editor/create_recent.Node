@@ -1,3 +1,7 @@
+MarginContainer
+CenterContainer
+Panel
+Window
 VSeparator
 VBoxContainer
 Label
@@ -7,11 +11,9 @@ Button
 GridContainer
 CheckButton
 OptionButton
-MarginContainer
 Control
 PanelContainer
 Container
 FileDialog
-CenterContainer
 TabContainer
 TabBar

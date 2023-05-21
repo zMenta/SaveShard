@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://drt8wk4erwbun"]
+[gd_scene load_steps=5 format=3 uid="uid://drt8wk4erwbun"]
 
 [ext_resource type="Script" path="res://main_menu/Settings.gd" id="1_0e56h"]
 [ext_resource type="Script" path="res://main_menu/StoneSave.gd" id="1_ojeiy"]
+[ext_resource type="Script" path="res://main_menu/FloatingWindow.gd" id="2_vf80d"]
+[ext_resource type="PackedScene" uid="uid://dqhll4wtf0ak6" path="res://save_widget/save_widget.tscn" id="3_0pxf3"]
 
 [node name="MainMenu" type="PanelContainer"]
 anchors_preset = 15
@@ -84,6 +86,7 @@ layout_mode = 2
 
 [node name="FloatingWindow" type="VBoxContainer" parent="MarginContainer/TabContainer/StoneSave/VBoxContainer"]
 layout_mode = 2
+script = ExtResource("2_vf80d")
 
 [node name="Label" type="Label" parent="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow"]
 layout_mode = 2
@@ -94,7 +97,7 @@ horizontal_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-text = "Create Window"
+text = "Open Window Widget"
 
 [node name="WindowContainer" type="VBoxContainer" parent="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow"]
 layout_mode = 2
@@ -114,8 +117,9 @@ layout_mode = 2
 layout_mode = 2
 theme_override_constants/separation = 60
 
-[node name="CheckButton" type="CheckButton" parent="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow/WindowContainer/HBoxContainer"]
+[node name="BordlessCheck" type="CheckButton" parent="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow/WindowContainer/HBoxContainer"]
 layout_mode = 2
+button_pressed = true
 text = "Bordless"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow/WindowContainer/HBoxContainer"]
@@ -146,6 +150,8 @@ text = "Bottom Left"
 [node name="Button4" type="Button" parent="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow/WindowContainer/HBoxContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
 text = "Bottom Right"
+
+[node name="SaveWidget" parent="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow" instance=ExtResource("3_0pxf3")]
 
 [node name="Settings" type="MarginContainer" parent="MarginContainer/TabContainer"]
 visible = false
@@ -279,6 +285,10 @@ access = 2
 show_hidden_files = true
 
 [connection signal="tab_changed" from="MarginContainer/TabContainer" to="MarginContainer/TabContainer/StoneSave" method="_on_tab_container_tab_changed"]
+[connection signal="pressed" from="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow/WindowButton" to="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow" method="_on_window_button_pressed"]
+[connection signal="toggled" from="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow/WindowContainer/HBoxContainer/BordlessCheck" to="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow" method="_on_bordless_check_toggled"]
+[connection signal="close_requested" from="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow/SaveWidget" to="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow" method="_on_save_widget_close_requested"]
+[connection signal="visibility_changed" from="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow/SaveWidget" to="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow" method="_on_save_widget_visibility_changed"]
 [connection signal="pressed" from="MarginContainer/TabContainer/Settings/VBoxContainer/ClearData" to="MarginContainer/TabContainer/Settings" method="_on_clear_data_pressed"]
 [connection signal="pressed" from="MarginContainer/TabContainer/Settings/VBoxContainer/StoneDirectory/HBoxContainer/DirButton" to="MarginContainer/TabContainer/Settings" method="_on_dir_button_pressed"]
 [connection signal="pressed" from="MarginContainer/TabContainer/Settings/VBoxContainer/BackupDirectory/HBoxContainer/SaveDirButton" to="MarginContainer/TabContainer/Settings" method="_on_save_dir_button_pressed"]
