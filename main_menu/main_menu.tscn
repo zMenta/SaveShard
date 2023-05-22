@@ -81,7 +81,6 @@ text = "InsertSave"
 
 [node name="LogLabel" type="Label" parent="MarginContainer/TabContainer/StoneSave/VBoxContainer/Actions"]
 layout_mode = 2
-text = "Action Log"
 horizontal_alignment = 1
 
 [node name="HSeparator2" type="HSeparator" parent="MarginContainer/TabContainer/StoneSave/VBoxContainer"]
@@ -317,6 +316,7 @@ theme_override_font_sizes/font_size = 10
 text = "V 0.0 "
 
 [connection signal="tab_changed" from="MarginContainer/TabContainer" to="MarginContainer/TabContainer/StoneSave" method="_on_tab_container_tab_changed"]
+[connection signal="item_selected" from="MarginContainer/TabContainer/StoneSave/VBoxContainer/CharacterSelection/OptionButton" to="MarginContainer/TabContainer/StoneSave/VBoxContainer/Actions" method="_on_option_button_item_selected"]
 [connection signal="pressed" from="MarginContainer/TabContainer/StoneSave/VBoxContainer/Actions/HBoxContainer/SaveButton" to="MarginContainer/TabContainer/StoneSave/VBoxContainer/Actions" method="_on_save_button_pressed"]
 [connection signal="pressed" from="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow/WindowButton" to="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow" method="_on_window_button_pressed"]
 [connection signal="toggled" from="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow/WindowContainer/HBoxContainer/VBoxContainer2/BordlessCheck" to="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow" method="_on_bordless_check_toggled"]
