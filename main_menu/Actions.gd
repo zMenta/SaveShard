@@ -13,6 +13,7 @@ func _ready():
 	save_path = Config.get_value("settings", "save_directory", "user://") + save_folder_name
 	await widget.ready
 	widget.button_save.pressed.connect(_on_save_button_pressed)
+	widget.button_insert.pressed.connect(_on_insert_button_pressed)
 	
 	
 func _on_save_button_pressed():
