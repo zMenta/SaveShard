@@ -26,13 +26,18 @@ func _on_save_button_pressed():
 	if not DirAccess.dir_exists_absolute(character_save_path):
 		DirAccess.make_dir_absolute(character_save_path)
 	
-	for file in DirAccess.get_files_at(exitsave_path):
-		var err = DirAccess.copy_absolute(exitsave_path + "/" + file, character_save_path + "/" + file)
-		if err != OK:
-			log_label.text = "An error occured when copying save files"
-			return
+	
+	if _copy_dir_files(exitsave_path, character_save_path) != OK:
+		log_label.text = "An error occured when copying save files"
+		return
 
 	log_label.text = "Exitsave copied with sucess"
+
+func _copy_dir_files(from: String, to: String) -> Error:
+	for file in DirAccess.get_files_at(from):
+		var err = DirAccess.copy_absolute(from + "/" + file, to + "/" + file)
+		if err != OK: return err
+	return OK
 
 func _on_option_button_item_selected(index):
 	current_character = option_button.get_item_text(index)
