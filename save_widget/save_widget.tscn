@@ -149,6 +149,7 @@ expand_icon = true
 [node name="InsertButton" type="Button" parent="Panel/HBoxContainer"]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
+tooltip_text = "Inserts the backup save into Stoneshard."
 theme_override_styles/focus = SubResource("StyleBoxEmpty_6ffru")
 icon = ExtResource("2_3pxrt")
 icon_alignment = 1
