@@ -1,3 +1,5 @@
+AnimationPlayer
+TabBar
 MarginContainer
 TextureRect
 Button
@@ -19,4 +21,3 @@ PanelContainer
 Container
 FileDialog
 TabContainer
-TabBar

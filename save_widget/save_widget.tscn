@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://dqhll4wtf0ak6"]
+[gd_scene load_steps=13 format=3 uid="uid://dqhll4wtf0ak6"]
 
 [ext_resource type="Script" path="res://save_widget/save_widget.gd" id="1_ugtcg"]
 [ext_resource type="Texture2D" uid="uid://bb184qtlyr7w4" path="res://assets/upload.svg" id="2_3pxrt"]
 [ext_resource type="Texture2D" uid="uid://dkfn1710iym3w" path="res://assets/check-circle.svg" id="2_x4xsu"]
+[ext_resource type="Texture2D" uid="uid://brdw2kdyts2lw" path="res://assets/alert-triangle.svg" id="3_ggj4r"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ygeif"]
 bg_color = Color(0.00392157, 0, 0.12549, 0.478431)
@@ -14,14 +15,99 @@ load_path = "res://.godot/imported/save.svg-f4a24f3d3e56e78e8220dbcb3bab9b92.cte
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6ffru"]
 
+[sub_resource type="Animation" id="Animation_egl01"]
+resource_name = "ok_message"
+length = 0.7
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_set_ok_icon"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Panel/HBoxContainer/MarginContainer/TextureRect:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0.12549, 0.72549, 0, 1), Color(0.12549, 0.72549, 0, 1), Color(0.12549, 0.72549, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_w7fp5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel/HBoxContainer/MarginContainer/TextureRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_b0qbw"]
+resource_name = "error_message"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel/HBoxContainer/MarginContainer/TextureRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0.913725, 0, 0.0352941, 1), Color(0.913725, 0, 0.0352941, 1), Color(0.913725, 0, 0.0352941, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_set_error_icon"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6e5ur"]
+_data = {
+"RESET": SubResource("Animation_w7fp5"),
+"error_message": SubResource("Animation_b0qbw"),
+"ok_message": SubResource("Animation_egl01")
+}
+
 [node name="SaveWidget" type="Window"]
 initial_position = 1
 title = "save widget"
 size = Vector2i(135, 46)
+visible = false
 unresizable = true
 borderless = true
 always_on_top = true
 script = ExtResource("1_ugtcg")
+ok_icon = ExtResource("2_x4xsu")
+error_icon = ExtResource("3_ggj4r")
 
 [node name="Panel" type="Panel" parent="."]
 anchors_preset = 15
@@ -45,7 +131,7 @@ theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
 [node name="TextureRect" type="TextureRect" parent="Panel/HBoxContainer/MarginContainer"]
-visible = false
+modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
 texture = ExtResource("2_x4xsu")
@@ -67,3 +153,8 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_6ffru")
 icon = ExtResource("2_3pxrt")
 icon_alignment = 1
 expand_icon = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_6e5ur")
+}
