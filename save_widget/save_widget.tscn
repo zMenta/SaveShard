@@ -1,14 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://dqhll4wtf0ak6"]
+[gd_scene load_steps=6 format=3 uid="uid://dqhll4wtf0ak6"]
 
 [ext_resource type="Script" path="res://save_widget/save_widget.gd" id="1_ugtcg"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ygeif"]
 bg_color = Color(0.00392157, 0, 0.12549, 0.478431)
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7qxgs"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2nt11"]
+load_path = "res://.godot/imported/save.svg-f4a24f3d3e56e78e8220dbcb3bab9b92.ctex"
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6ffru"]
+
 [node name="SaveWidget" type="Window"]
 initial_position = 1
 title = "save widget"
-size = Vector2i(140, 38)
+size = Vector2i(168, 38)
 visible = false
 unresizable = true
 borderless = true
@@ -31,8 +38,11 @@ offset_bottom = 35.0
 
 [node name="SaveButton" type="Button" parent="Panel/HBoxContainer"]
 layout_mode = 2
-text = "Save"
+tooltip_text = "Creates a backup of the exitsave."
+theme_override_styles/focus = SubResource("StyleBoxEmpty_7qxgs")
+icon = SubResource("CompressedTexture2D_2nt11")
 
 [node name="InsertButton" type="Button" parent="Panel/HBoxContainer"]
 layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_6ffru")
 text = "InsertSave"

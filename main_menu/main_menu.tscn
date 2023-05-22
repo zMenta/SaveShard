@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://drt8wk4erwbun"]
+[gd_scene load_steps=8 format=3 uid="uid://drt8wk4erwbun"]
 
 [ext_resource type="Script" path="res://main_menu/Settings.gd" id="1_0e56h"]
 [ext_resource type="Script" path="res://main_menu/StoneSave.gd" id="1_ojeiy"]
 [ext_resource type="Script" path="res://main_menu/Actions.gd" id="2_m7rd4"]
 [ext_resource type="Script" path="res://main_menu/FloatingWindow.gd" id="2_vf80d"]
 [ext_resource type="PackedScene" uid="uid://dqhll4wtf0ak6" path="res://save_widget/save_widget.tscn" id="3_0pxf3"]
+[ext_resource type="Texture2D" uid="uid://bt35s2mf5oqr3" path="res://assets/save.svg" id="3_1tc5f"]
+[ext_resource type="Texture2D" uid="uid://bb184qtlyr7w4" path="res://assets/upload.svg" id="4_ajeu6"]
 
 [node name="MainMenu" type="PanelContainer"]
 anchors_preset = 15
@@ -74,10 +76,12 @@ alignment = 1
 [node name="SaveButton" type="Button" parent="MarginContainer/TabContainer/StoneSave/VBoxContainer/Actions/HBoxContainer"]
 layout_mode = 2
 text = "Save"
+icon = ExtResource("3_1tc5f")
 
 [node name="InsertButton" type="Button" parent="MarginContainer/TabContainer/StoneSave/VBoxContainer/Actions/HBoxContainer"]
 layout_mode = 2
 text = "InsertSave"
+icon = ExtResource("4_ajeu6")
 
 [node name="LogLabel" type="Label" parent="MarginContainer/TabContainer/StoneSave/VBoxContainer/Actions"]
 layout_mode = 2
