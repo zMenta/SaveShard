@@ -74,14 +74,20 @@ theme_override_constants/separation = 25
 alignment = 1
 
 [node name="SaveButton" type="Button" parent="MarginContainer/TabContainer/StoneSave/VBoxContainer/Actions/HBoxContainer"]
+custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
+tooltip_text = "Creates a backup of your stoneshard character exitsave."
 text = "Save"
 icon = ExtResource("3_1tc5f")
+expand_icon = true
 
 [node name="InsertButton" type="Button" parent="MarginContainer/TabContainer/StoneSave/VBoxContainer/Actions/HBoxContainer"]
+custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
+tooltip_text = "Insert the backup save into Stoneshard."
 text = "InsertSave"
 icon = ExtResource("4_ajeu6")
+expand_icon = true
 
 [node name="LogLabel" type="Label" parent="MarginContainer/TabContainer/StoneSave/VBoxContainer/Actions"]
 layout_mode = 2
