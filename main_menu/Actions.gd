@@ -3,6 +3,7 @@ extends VBoxContainer
 @onready var widget := $"../SaveWidget"
 @onready var option_button := $"../CharacterSelection/OptionButton"
 @onready var log_label := $LogLabel
+@onready var animation := $AnimationPlayer
 
 var config_path := "user://settings.cfg"
 var save_folder_name := "saveshard_saves"
@@ -26,6 +27,7 @@ func _on_save_button_pressed():
 	if not DirAccess.dir_exists_absolute(exitsave_path):
 		log_label.text = "Error: Exitsave don't exist."
 		widget.animation.play("error_message")		
+		animation.play("error_log")
 		return
 		
 	var character_save_path: String = save_path + "/" + current_character
@@ -35,24 +37,28 @@ func _on_save_button_pressed():
 	
 	if _copy_dir_files(exitsave_path, character_save_path) != OK:
 		log_label.text = "An error occured when copying save files"
-		widget.animation.play("error_message")		
+		widget.animation.play("error_message")	
+		animation.play("error_log")			
 		return
 
 	log_label.text = "Exitsave copied with sucess"
 	widget.animation.play("ok_message")
+	animation.play("sucess_log")
 
 
 func _on_insert_button_pressed():
 	var backup_path : String = Config.get_value("settings", "save_directory", "user://") + "/" + save_folder_name + "/" + current_character
 	if not DirAccess.dir_exists_absolute(backup_path):
 		log_label.text = "Error: No save directory found with this character"
-		widget.animation.play("error_message")		
+		widget.animation.play("error_message")
+		animation.play("error_log")
 		return
 	
 	var files = DirAccess.get_files_at(backup_path)
 	if len(files) < 3:
 		log_label.text = "Error reading backup save files"
 		widget.animation.play("error_message")
+		animation.play("error_log")
 		return
 	
 	var char_save_path : String = Config.get_value("settings", "stoneshard_directory") + "/characters_v1/" + current_character + "/exitsave_1" 
@@ -62,6 +68,7 @@ func _on_insert_button_pressed():
 	if _copy_dir_files(backup_path, char_save_path) != OK: return
 	log_label.text = "Exitsave Inserted with sucess"
 	widget.animation.play("ok_message")
+	animation.play("sucess_log")
 
 
 func _copy_dir_files(from: String, to: String) -> Error:
