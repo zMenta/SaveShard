@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://drt8wk4erwbun"]
+[gd_scene load_steps=14 format=3 uid="uid://drt8wk4erwbun"]
 
 [ext_resource type="Script" path="res://main_menu/Settings.gd" id="1_0e56h"]
 [ext_resource type="Script" path="res://main_menu/StoneSave.gd" id="1_ojeiy"]
@@ -7,6 +7,12 @@
 [ext_resource type="PackedScene" uid="uid://dqhll4wtf0ak6" path="res://save_widget/save_widget.tscn" id="3_0pxf3"]
 [ext_resource type="Texture2D" uid="uid://bt35s2mf5oqr3" path="res://assets/save.svg" id="3_1tc5f"]
 [ext_resource type="Texture2D" uid="uid://bb184qtlyr7w4" path="res://assets/upload.svg" id="4_ajeu6"]
+[ext_resource type="Texture2D" uid="uid://blncqepdilbue" path="res://assets/arrow-up-left.svg" id="6_7hrjl"]
+[ext_resource type="Texture2D" uid="uid://c8xtr5s605tf7" path="res://assets/arrow-up-right.svg" id="7_1xbm4"]
+[ext_resource type="Texture2D" uid="uid://bfiuymoxlqay0" path="res://assets/x-square.svg" id="7_2rfda"]
+[ext_resource type="Texture2D" uid="uid://biks0fe887rr8" path="res://assets/arrow-down-left.svg" id="8_qjhe4"]
+[ext_resource type="Texture2D" uid="uid://bjsnkp5cj5xni" path="res://assets/square.svg" id="8_uptwx"]
+[ext_resource type="Texture2D" uid="uid://dih13oy4gu4w0" path="res://assets/arrow-down-right.svg" id="9_e3ir1"]
 
 [node name="MainMenu" type="PanelContainer"]
 anchors_preset = 15
@@ -99,6 +105,8 @@ layout_mode = 2
 [node name="FloatingWindow" type="VBoxContainer" parent="MarginContainer/TabContainer/StoneSave/VBoxContainer"]
 layout_mode = 2
 script = ExtResource("2_vf80d")
+icon_open = ExtResource("8_uptwx")
+icon_close = ExtResource("7_2rfda")
 
 [node name="Label" type="Label" parent="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow"]
 layout_mode = 2
@@ -106,10 +114,13 @@ text = "Floating Window Widget"
 horizontal_alignment = 1
 
 [node name="WindowButton" type="Button" parent="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow"]
+custom_minimum_size = Vector2(210, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "Open Window Widget"
+icon = ExtResource("8_uptwx")
+expand_icon = true
 
 [node name="WindowContainer" type="VBoxContainer" parent="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow"]
 layout_mode = 2
@@ -127,7 +138,8 @@ layout_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow/WindowContainer"]
 layout_mode = 2
-theme_override_constants/separation = 60
+theme_override_constants/separation = 100
+alignment = 1
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow/WindowContainer/HBoxContainer"]
 layout_mode = 2
@@ -166,20 +178,34 @@ layout_mode = 2
 columns = 2
 
 [node name="TopLeft" type="Button" parent="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow/WindowContainer/HBoxContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
-text = "Top Left"
+size_flags_horizontal = 4
+icon = ExtResource("6_7hrjl")
+icon_alignment = 1
+expand_icon = true
 
 [node name="TopRight" type="Button" parent="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow/WindowContainer/HBoxContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
-text = "Top Right"
+size_flags_horizontal = 4
+icon = ExtResource("7_1xbm4")
+icon_alignment = 1
+expand_icon = true
 
 [node name="BottomLeft" type="Button" parent="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow/WindowContainer/HBoxContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
-text = "Bottom Left"
+icon = ExtResource("8_qjhe4")
+icon_alignment = 1
+expand_icon = true
 
 [node name="BottomRight" type="Button" parent="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow/WindowContainer/HBoxContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
-text = "Bottom Right"
+icon = ExtResource("9_e3ir1")
+icon_alignment = 1
+expand_icon = true
 
 [node name="SaveWidget" parent="MarginContainer/TabContainer/StoneSave/VBoxContainer" instance=ExtResource("3_0pxf3")]
 

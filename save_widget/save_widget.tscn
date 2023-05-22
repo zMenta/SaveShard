@@ -1,6 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://dqhll4wtf0ak6"]
+[gd_scene load_steps=8 format=3 uid="uid://dqhll4wtf0ak6"]
 
 [ext_resource type="Script" path="res://save_widget/save_widget.gd" id="1_ugtcg"]
+[ext_resource type="Texture2D" uid="uid://bb184qtlyr7w4" path="res://assets/upload.svg" id="2_3pxrt"]
+[ext_resource type="Texture2D" uid="uid://dkfn1710iym3w" path="res://assets/check-circle.svg" id="2_x4xsu"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ygeif"]
 bg_color = Color(0.00392157, 0, 0.12549, 0.478431)
@@ -15,8 +17,7 @@ load_path = "res://.godot/imported/save.svg-f4a24f3d3e56e78e8220dbcb3bab9b92.cte
 [node name="SaveWidget" type="Window"]
 initial_position = 1
 title = "save widget"
-size = Vector2i(168, 38)
-visible = false
+size = Vector2i(135, 46)
 unresizable = true
 borderless = true
 always_on_top = true
@@ -36,13 +37,33 @@ offset_top = 4.0
 offset_right = 138.0
 offset_bottom = 35.0
 
+[node name="MarginContainer" type="MarginContainer" parent="Panel/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="TextureRect" type="TextureRect" parent="Panel/HBoxContainer/MarginContainer"]
+visible = false
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+texture = ExtResource("2_x4xsu")
+expand_mode = 2
+stretch_mode = 5
+
 [node name="SaveButton" type="Button" parent="Panel/HBoxContainer"]
+custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 tooltip_text = "Creates a backup of the exitsave."
 theme_override_styles/focus = SubResource("StyleBoxEmpty_7qxgs")
 icon = SubResource("CompressedTexture2D_2nt11")
+expand_icon = true
 
 [node name="InsertButton" type="Button" parent="Panel/HBoxContainer"]
+custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 theme_override_styles/focus = SubResource("StyleBoxEmpty_6ffru")
-text = "InsertSave"
+icon = ExtResource("2_3pxrt")
+icon_alignment = 1
+expand_icon = true

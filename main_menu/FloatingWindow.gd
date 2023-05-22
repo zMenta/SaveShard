@@ -1,5 +1,8 @@
 extends VBoxContainer
 
+@export var icon_open : Texture2D
+@export var icon_close : Texture2D
+
 @onready var window := $"../SaveWidget"
 @onready var window_container := $WindowContainer
 @onready var window_button := $WindowButton
@@ -22,9 +25,11 @@ func _ready():
 func _on_window_button_pressed():
 	if window.visible == false:
 		window_button.text = "Close Window Widget"
+		window_button.icon = icon_close
 		window.show()
 	else:
 		window_button.text = "Open Window Widget"
+		window_button.icon = icon_open		
 		window.hide()
 
 
