@@ -1,6 +1,7 @@
-[gd_scene load_steps=18 format=3 uid="uid://drt8wk4erwbun"]
+[gd_scene load_steps=19 format=3 uid="uid://drt8wk4erwbun"]
 
 [ext_resource type="Script" path="res://main_menu/Settings.gd" id="1_0e56h"]
+[ext_resource type="Texture2D" uid="uid://bsnpesqju2q82" path="res://assets/coffee.svg" id="1_khllr"]
 [ext_resource type="Script" path="res://main_menu/StoneSave.gd" id="1_ojeiy"]
 [ext_resource type="Script" path="res://main_menu/Actions.gd" id="2_m7rd4"]
 [ext_resource type="Script" path="res://main_menu/FloatingWindow.gd" id="2_vf80d"]
@@ -13,22 +14,6 @@
 [ext_resource type="Texture2D" uid="uid://biks0fe887rr8" path="res://assets/arrow-down-left.svg" id="8_qjhe4"]
 [ext_resource type="Texture2D" uid="uid://bjsnkp5cj5xni" path="res://assets/square.svg" id="8_uptwx"]
 [ext_resource type="Texture2D" uid="uid://dih13oy4gu4w0" path="res://assets/arrow-down-right.svg" id="9_e3ir1"]
-
-[sub_resource type="Animation" id="Animation_ito4k"]
-resource_name = "sucess_log"
-length = 2.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("LogLabel:theme_override_colors/font_color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.6, 2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Color(0.12549, 0.72549, 0, 1), Color(0.12549, 0.72549, 0, 1), Color(0.12549, 0.72549, 0, 0)]
-}
 
 [sub_resource type="Animation" id="Animation_2t76f"]
 length = 0.001
@@ -59,6 +44,22 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(0.913725, 0, 0.0352941, 1), Color(0.913725, 0, 0.0352941, 1), Color(0.913725, 0, 0.0352941, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ito4k"]
+resource_name = "sucess_log"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LogLabel:theme_override_colors/font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.6, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0.12549, 0.72549, 0, 1), Color(0.12549, 0.72549, 0, 1), Color(0.12549, 0.72549, 0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wyfpe"]
@@ -403,12 +404,34 @@ size_flags_vertical = 8
 theme_override_font_sizes/font_size = 10
 text = " Created by zMenta"
 
+[node name="DonateContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/DonateContainer"]
+modulate = Color(0.309804, 0.454902, 1, 1)
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("1_khllr")
+expand_mode = 1
+
+[node name="DonateButton" type="LinkButton" parent="MarginContainer/DonateContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.309804, 0.454902, 1, 1)
+theme_override_font_sizes/font_size = 22
+text = "Buy me a Coffee"
+underline = 1
+uri = "https://ko-fi.com/zmenta"
+
 [node name="VersionLabel" type="Label" parent="MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
 theme_override_font_sizes/font_size = 10
-text = "V 0.0 "
+text = "V 0.1 "
 
 [connection signal="tab_changed" from="MarginContainer/TabContainer" to="MarginContainer/TabContainer/StoneSave" method="_on_tab_container_tab_changed"]
 [connection signal="item_selected" from="MarginContainer/TabContainer/StoneSave/VBoxContainer/CharacterSelection/OptionButton" to="MarginContainer/TabContainer/StoneSave/VBoxContainer/Actions" method="_on_option_button_item_selected"]

@@ -15,36 +15,6 @@ load_path = "res://.godot/imported/save.svg-f4a24f3d3e56e78e8220dbcb3bab9b92.cte
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6ffru"]
 
-[sub_resource type="Animation" id="Animation_egl01"]
-resource_name = "ok_message"
-length = 0.7
-tracks/0/type = "method"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"_set_ok_icon"
-}]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Panel/HBoxContainer/MarginContainer/TextureRect:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.4, 0.7),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Color(0.12549, 0.72549, 0, 1), Color(0.12549, 0.72549, 0, 1), Color(0.12549, 0.72549, 0, 0)]
-}
-
 [sub_resource type="Animation" id="Animation_w7fp5"]
 length = 0.001
 tracks/0/type = "value"
@@ -88,6 +58,36 @@ tracks/1/keys = {
 "args": [],
 "method": &"_set_error_icon"
 }]
+}
+
+[sub_resource type="Animation" id="Animation_egl01"]
+resource_name = "ok_message"
+length = 0.7
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_set_ok_icon"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Panel/HBoxContainer/MarginContainer/TextureRect:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0.12549, 0.72549, 0, 1), Color(0.12549, 0.72549, 0, 1), Color(0.12549, 0.72549, 0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6e5ur"]

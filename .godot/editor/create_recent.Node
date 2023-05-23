@@ -1,11 +1,12 @@
+HBoxContainer
+TextureRect
+LinkButton
 AnimationPlayer
 TabBar
 MarginContainer
-TextureRect
 Button
 TextureButton
 Label
-HBoxContainer
 HSlider
 VBoxContainer
 CenterContainer

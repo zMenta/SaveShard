@@ -24,7 +24,7 @@ Config="*res://config_autoload/config.gd"
 [display]
 
 window/size/viewport_width=500
-window/size/viewport_height=620
+window/size/viewport_height=650
 window/subwindows/embed_subwindows=false
 
 [rendering]
