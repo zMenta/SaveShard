@@ -21,7 +21,7 @@ If you prefer a video version:  *TODO*
 >- On windows it can be found at AppData/Local/StoneShard
 >- Optionally you can set up a custom save directory where your Stoneshards saves will be copied to.
 
-## 2 .Now you can go back to the SaveShard tab.
+## 2. Go back to the SaveShard tab.
 If everything is alright the error message should disappear.
 
 **Now everything is set up!**
