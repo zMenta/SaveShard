@@ -83,7 +83,7 @@ layout_mode = 2
 layout_mode = 2
 tab_alignment = 1
 
-[node name="StoneSave" type="MarginContainer" parent="MarginContainer/TabContainer"]
+[node name="SaveShard" type="MarginContainer" parent="MarginContainer/TabContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 30
@@ -91,50 +91,50 @@ theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 30
 script = ExtResource("1_ojeiy")
 
-[node name="ErrorLabel" type="Label" parent="MarginContainer/TabContainer/StoneSave"]
+[node name="ErrorLabel" type="Label" parent="MarginContainer/TabContainer/SaveShard"]
 visible = false
 layout_mode = 2
 theme_override_colors/font_color = Color(0.972549, 0.00784314, 0, 1)
 theme_override_font_sizes/font_size = 14
 text = "Couldn't load. Make sure the StoneShard directory is set correctly."
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/TabContainer/StoneSave"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/TabContainer/SaveShard"]
 layout_mode = 2
 theme_override_constants/separation = 5
 
-[node name="CharacterSelection" type="VBoxContainer" parent="MarginContainer/TabContainer/StoneSave/VBoxContainer"]
+[node name="CharacterSelection" type="VBoxContainer" parent="MarginContainer/TabContainer/SaveShard/VBoxContainer"]
 layout_mode = 2
 tooltip_text = "Character Selection of which character it will save.
 Select the character you plan to play."
 
-[node name="Label" type="Label" parent="MarginContainer/TabContainer/StoneSave/VBoxContainer/CharacterSelection"]
+[node name="Label" type="Label" parent="MarginContainer/TabContainer/SaveShard/VBoxContainer/CharacterSelection"]
 layout_mode = 2
 text = "Current Character"
 horizontal_alignment = 1
 
-[node name="OptionButton" type="OptionButton" parent="MarginContainer/TabContainer/StoneSave/VBoxContainer/CharacterSelection"]
+[node name="OptionButton" type="OptionButton" parent="MarginContainer/TabContainer/SaveShard/VBoxContainer/CharacterSelection"]
 layout_mode = 2
 
-[node name="HSeparator" type="HSeparator" parent="MarginContainer/TabContainer/StoneSave/VBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/TabContainer/SaveShard/VBoxContainer"]
 layout_mode = 2
 
-[node name="Actions" type="VBoxContainer" parent="MarginContainer/TabContainer/StoneSave/VBoxContainer"]
+[node name="Actions" type="VBoxContainer" parent="MarginContainer/TabContainer/SaveShard/VBoxContainer"]
 layout_mode = 2
 tooltip_text = "Actions that you use.
 You can also use the floating window options."
 script = ExtResource("2_m7rd4")
 
-[node name="Label" type="Label" parent="MarginContainer/TabContainer/StoneSave/VBoxContainer/Actions"]
+[node name="Label" type="Label" parent="MarginContainer/TabContainer/SaveShard/VBoxContainer/Actions"]
 layout_mode = 2
 text = "Actions"
 horizontal_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/TabContainer/StoneSave/VBoxContainer/Actions"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/TabContainer/SaveShard/VBoxContainer/Actions"]
 layout_mode = 2
 theme_override_constants/separation = 25
 alignment = 1
 
-[node name="SaveButton" type="Button" parent="MarginContainer/TabContainer/StoneSave/VBoxContainer/Actions/HBoxContainer"]
+[node name="SaveButton" type="Button" parent="MarginContainer/TabContainer/SaveShard/VBoxContainer/Actions/HBoxContainer"]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 tooltip_text = "Creates a backup of your stoneshard character exitsave."
@@ -142,7 +142,7 @@ text = "Save"
 icon = ExtResource("3_1tc5f")
 expand_icon = true
 
-[node name="InsertButton" type="Button" parent="MarginContainer/TabContainer/StoneSave/VBoxContainer/Actions/HBoxContainer"]
+[node name="InsertButton" type="Button" parent="MarginContainer/TabContainer/SaveShard/VBoxContainer/Actions/HBoxContainer"]
 custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 tooltip_text = "Insert the backup save into Stoneshard."
@@ -150,30 +150,30 @@ text = "InsertSave"
 icon = ExtResource("4_ajeu6")
 expand_icon = true
 
-[node name="LogLabel" type="Label" parent="MarginContainer/TabContainer/StoneSave/VBoxContainer/Actions"]
+[node name="LogLabel" type="Label" parent="MarginContainer/TabContainer/SaveShard/VBoxContainer/Actions"]
 layout_mode = 2
 horizontal_alignment = 1
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="MarginContainer/TabContainer/StoneSave/VBoxContainer/Actions"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MarginContainer/TabContainer/SaveShard/VBoxContainer/Actions"]
 libraries = {
 "": SubResource("AnimationLibrary_wyfpe")
 }
 
-[node name="HSeparator2" type="HSeparator" parent="MarginContainer/TabContainer/StoneSave/VBoxContainer"]
+[node name="HSeparator2" type="HSeparator" parent="MarginContainer/TabContainer/SaveShard/VBoxContainer"]
 layout_mode = 2
 
-[node name="FloatingWindow" type="VBoxContainer" parent="MarginContainer/TabContainer/StoneSave/VBoxContainer"]
+[node name="FloatingWindow" type="VBoxContainer" parent="MarginContainer/TabContainer/SaveShard/VBoxContainer"]
 layout_mode = 2
 script = ExtResource("2_vf80d")
 icon_open = ExtResource("8_uptwx")
 icon_close = ExtResource("7_2rfda")
 
-[node name="Label" type="Label" parent="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow"]
+[node name="Label" type="Label" parent="MarginContainer/TabContainer/SaveShard/VBoxContainer/FloatingWindow"]
 layout_mode = 2
 text = "Floating Window Widget"
 horizontal_alignment = 1
 
-[node name="WindowButton" type="Button" parent="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow"]
+[node name="WindowButton" type="Button" parent="MarginContainer/TabContainer/SaveShard/VBoxContainer/FloatingWindow"]
 custom_minimum_size = Vector2(210, 0)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -182,41 +182,41 @@ text = "Open Window Widget"
 icon = ExtResource("8_uptwx")
 expand_icon = true
 
-[node name="WindowContainer" type="VBoxContainer" parent="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow"]
+[node name="WindowContainer" type="VBoxContainer" parent="MarginContainer/TabContainer/SaveShard/VBoxContainer/FloatingWindow"]
 layout_mode = 2
 
-[node name="DummyLabel2" type="Label" parent="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow/WindowContainer"]
+[node name="DummyLabel2" type="Label" parent="MarginContainer/TabContainer/SaveShard/VBoxContainer/FloatingWindow/WindowContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow/WindowContainer"]
+[node name="Label" type="Label" parent="MarginContainer/TabContainer/SaveShard/VBoxContainer/FloatingWindow/WindowContainer"]
 layout_mode = 2
 text = "Floating Window Options"
 horizontal_alignment = 1
 
-[node name="DummyLabel" type="Label" parent="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow/WindowContainer"]
+[node name="DummyLabel" type="Label" parent="MarginContainer/TabContainer/SaveShard/VBoxContainer/FloatingWindow/WindowContainer"]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow/WindowContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/TabContainer/SaveShard/VBoxContainer/FloatingWindow/WindowContainer"]
 layout_mode = 2
 theme_override_constants/separation = 100
 alignment = 1
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow/WindowContainer/HBoxContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/TabContainer/SaveShard/VBoxContainer/FloatingWindow/WindowContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="BordlessCheck" type="CheckButton" parent="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow/WindowContainer/HBoxContainer/VBoxContainer2"]
+[node name="BordlessCheck" type="CheckButton" parent="MarginContainer/TabContainer/SaveShard/VBoxContainer/FloatingWindow/WindowContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
 button_pressed = true
 text = "Bordless"
 
-[node name="DummyLabel" type="Label" parent="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow/WindowContainer/HBoxContainer/VBoxContainer2"]
+[node name="DummyLabel" type="Label" parent="MarginContainer/TabContainer/SaveShard/VBoxContainer/FloatingWindow/WindowContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
 
-[node name="WidgetScaleLabel" type="Label" parent="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow/WindowContainer/HBoxContainer/VBoxContainer2"]
+[node name="WidgetScaleLabel" type="Label" parent="MarginContainer/TabContainer/SaveShard/VBoxContainer/FloatingWindow/WindowContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
 text = "Widget Scale: 1.0"
 
-[node name="HSlider" type="HSlider" parent="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow/WindowContainer/HBoxContainer/VBoxContainer2"]
+[node name="HSlider" type="HSlider" parent="MarginContainer/TabContainer/SaveShard/VBoxContainer/FloatingWindow/WindowContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
 min_value = 0.4
 max_value = 3.0
@@ -224,20 +224,20 @@ step = 0.2
 value = 1.0
 tick_count = 5
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow/WindowContainer/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/TabContainer/SaveShard/VBoxContainer/FloatingWindow/WindowContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow/WindowContainer/HBoxContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="MarginContainer/TabContainer/SaveShard/VBoxContainer/FloatingWindow/WindowContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 15
 text = "Move Window"
 horizontal_alignment = 1
 
-[node name="GridContainer" type="GridContainer" parent="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow/WindowContainer/HBoxContainer/VBoxContainer"]
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/TabContainer/SaveShard/VBoxContainer/FloatingWindow/WindowContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 columns = 2
 
-[node name="TopLeft" type="Button" parent="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow/WindowContainer/HBoxContainer/VBoxContainer/GridContainer"]
+[node name="TopLeft" type="Button" parent="MarginContainer/TabContainer/SaveShard/VBoxContainer/FloatingWindow/WindowContainer/HBoxContainer/VBoxContainer/GridContainer"]
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -245,7 +245,7 @@ icon = ExtResource("6_7hrjl")
 icon_alignment = 1
 expand_icon = true
 
-[node name="TopRight" type="Button" parent="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow/WindowContainer/HBoxContainer/VBoxContainer/GridContainer"]
+[node name="TopRight" type="Button" parent="MarginContainer/TabContainer/SaveShard/VBoxContainer/FloatingWindow/WindowContainer/HBoxContainer/VBoxContainer/GridContainer"]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -253,21 +253,21 @@ icon = ExtResource("7_1xbm4")
 icon_alignment = 1
 expand_icon = true
 
-[node name="BottomLeft" type="Button" parent="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow/WindowContainer/HBoxContainer/VBoxContainer/GridContainer"]
+[node name="BottomLeft" type="Button" parent="MarginContainer/TabContainer/SaveShard/VBoxContainer/FloatingWindow/WindowContainer/HBoxContainer/VBoxContainer/GridContainer"]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 icon = ExtResource("8_qjhe4")
 icon_alignment = 1
 expand_icon = true
 
-[node name="BottomRight" type="Button" parent="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow/WindowContainer/HBoxContainer/VBoxContainer/GridContainer"]
+[node name="BottomRight" type="Button" parent="MarginContainer/TabContainer/SaveShard/VBoxContainer/FloatingWindow/WindowContainer/HBoxContainer/VBoxContainer/GridContainer"]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 icon = ExtResource("9_e3ir1")
 icon_alignment = 1
 expand_icon = true
 
-[node name="SaveWidget" parent="MarginContainer/TabContainer/StoneSave/VBoxContainer" instance=ExtResource("3_0pxf3")]
+[node name="SaveWidget" parent="MarginContainer/TabContainer/SaveShard/VBoxContainer" instance=ExtResource("3_0pxf3")]
 
 [node name="Settings" type="MarginContainer" parent="MarginContainer/TabContainer"]
 visible = false
@@ -431,21 +431,21 @@ layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
 theme_override_font_sizes/font_size = 10
-text = "V 0.1 "
+text = "V 0.1.1 "
 
-[connection signal="tab_changed" from="MarginContainer/TabContainer" to="MarginContainer/TabContainer/StoneSave" method="_on_tab_container_tab_changed"]
-[connection signal="item_selected" from="MarginContainer/TabContainer/StoneSave/VBoxContainer/CharacterSelection/OptionButton" to="MarginContainer/TabContainer/StoneSave/VBoxContainer/Actions" method="_on_option_button_item_selected"]
-[connection signal="pressed" from="MarginContainer/TabContainer/StoneSave/VBoxContainer/Actions/HBoxContainer/SaveButton" to="MarginContainer/TabContainer/StoneSave/VBoxContainer/Actions" method="_on_save_button_pressed"]
-[connection signal="pressed" from="MarginContainer/TabContainer/StoneSave/VBoxContainer/Actions/HBoxContainer/InsertButton" to="MarginContainer/TabContainer/StoneSave/VBoxContainer/Actions" method="_on_insert_button_pressed"]
-[connection signal="pressed" from="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow/WindowButton" to="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow" method="_on_window_button_pressed"]
-[connection signal="toggled" from="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow/WindowContainer/HBoxContainer/VBoxContainer2/BordlessCheck" to="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow" method="_on_bordless_check_toggled"]
-[connection signal="value_changed" from="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow/WindowContainer/HBoxContainer/VBoxContainer2/HSlider" to="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow" method="_on_h_slider_value_changed"]
-[connection signal="pressed" from="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow/WindowContainer/HBoxContainer/VBoxContainer/GridContainer/TopLeft" to="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow" method="_on_top_left_pressed"]
-[connection signal="pressed" from="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow/WindowContainer/HBoxContainer/VBoxContainer/GridContainer/TopRight" to="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow" method="_on_top_right_pressed"]
-[connection signal="pressed" from="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow/WindowContainer/HBoxContainer/VBoxContainer/GridContainer/BottomLeft" to="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow" method="_on_bottom_left_pressed"]
-[connection signal="pressed" from="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow/WindowContainer/HBoxContainer/VBoxContainer/GridContainer/BottomRight" to="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow" method="_on_bottom_right_pressed"]
-[connection signal="close_requested" from="MarginContainer/TabContainer/StoneSave/VBoxContainer/SaveWidget" to="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow" method="_on_save_widget_close_requested"]
-[connection signal="visibility_changed" from="MarginContainer/TabContainer/StoneSave/VBoxContainer/SaveWidget" to="MarginContainer/TabContainer/StoneSave/VBoxContainer/FloatingWindow" method="_on_save_widget_visibility_changed"]
+[connection signal="tab_changed" from="MarginContainer/TabContainer" to="MarginContainer/TabContainer/SaveShard" method="_on_tab_container_tab_changed"]
+[connection signal="item_selected" from="MarginContainer/TabContainer/SaveShard/VBoxContainer/CharacterSelection/OptionButton" to="MarginContainer/TabContainer/SaveShard/VBoxContainer/Actions" method="_on_option_button_item_selected"]
+[connection signal="pressed" from="MarginContainer/TabContainer/SaveShard/VBoxContainer/Actions/HBoxContainer/SaveButton" to="MarginContainer/TabContainer/SaveShard/VBoxContainer/Actions" method="_on_save_button_pressed"]
+[connection signal="pressed" from="MarginContainer/TabContainer/SaveShard/VBoxContainer/Actions/HBoxContainer/InsertButton" to="MarginContainer/TabContainer/SaveShard/VBoxContainer/Actions" method="_on_insert_button_pressed"]
+[connection signal="pressed" from="MarginContainer/TabContainer/SaveShard/VBoxContainer/FloatingWindow/WindowButton" to="MarginContainer/TabContainer/SaveShard/VBoxContainer/FloatingWindow" method="_on_window_button_pressed"]
+[connection signal="toggled" from="MarginContainer/TabContainer/SaveShard/VBoxContainer/FloatingWindow/WindowContainer/HBoxContainer/VBoxContainer2/BordlessCheck" to="MarginContainer/TabContainer/SaveShard/VBoxContainer/FloatingWindow" method="_on_bordless_check_toggled"]
+[connection signal="value_changed" from="MarginContainer/TabContainer/SaveShard/VBoxContainer/FloatingWindow/WindowContainer/HBoxContainer/VBoxContainer2/HSlider" to="MarginContainer/TabContainer/SaveShard/VBoxContainer/FloatingWindow" method="_on_h_slider_value_changed"]
+[connection signal="pressed" from="MarginContainer/TabContainer/SaveShard/VBoxContainer/FloatingWindow/WindowContainer/HBoxContainer/VBoxContainer/GridContainer/TopLeft" to="MarginContainer/TabContainer/SaveShard/VBoxContainer/FloatingWindow" method="_on_top_left_pressed"]
+[connection signal="pressed" from="MarginContainer/TabContainer/SaveShard/VBoxContainer/FloatingWindow/WindowContainer/HBoxContainer/VBoxContainer/GridContainer/TopRight" to="MarginContainer/TabContainer/SaveShard/VBoxContainer/FloatingWindow" method="_on_top_right_pressed"]
+[connection signal="pressed" from="MarginContainer/TabContainer/SaveShard/VBoxContainer/FloatingWindow/WindowContainer/HBoxContainer/VBoxContainer/GridContainer/BottomLeft" to="MarginContainer/TabContainer/SaveShard/VBoxContainer/FloatingWindow" method="_on_bottom_left_pressed"]
+[connection signal="pressed" from="MarginContainer/TabContainer/SaveShard/VBoxContainer/FloatingWindow/WindowContainer/HBoxContainer/VBoxContainer/GridContainer/BottomRight" to="MarginContainer/TabContainer/SaveShard/VBoxContainer/FloatingWindow" method="_on_bottom_right_pressed"]
+[connection signal="close_requested" from="MarginContainer/TabContainer/SaveShard/VBoxContainer/SaveWidget" to="MarginContainer/TabContainer/SaveShard/VBoxContainer/FloatingWindow" method="_on_save_widget_close_requested"]
+[connection signal="visibility_changed" from="MarginContainer/TabContainer/SaveShard/VBoxContainer/SaveWidget" to="MarginContainer/TabContainer/SaveShard/VBoxContainer/FloatingWindow" method="_on_save_widget_visibility_changed"]
 [connection signal="pressed" from="MarginContainer/TabContainer/Settings/VBoxContainer/ClearData" to="MarginContainer/TabContainer/Settings" method="_on_clear_data_pressed"]
 [connection signal="pressed" from="MarginContainer/TabContainer/Settings/VBoxContainer/StoneDirectory/HBoxContainer/DirButton" to="MarginContainer/TabContainer/Settings" method="_on_dir_button_pressed"]
 [connection signal="pressed" from="MarginContainer/TabContainer/Settings/VBoxContainer/BackupDirectory/HBoxContainer/SaveDirButton" to="MarginContainer/TabContainer/Settings" method="_on_save_dir_button_pressed"]
