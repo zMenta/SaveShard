@@ -5,8 +5,7 @@ It's not necessary to modify your game whatsoever. SaveShard *won't modify your 
 
 [Download and releases](https://github.com/zMenta/SaveShard/releases)
 
-![image](https://github.com/zMenta/SaveShard/assets/70714721/67fc9884-b55e-4277-b445-b928fb11076f)
-
+![image](https://github.com/zMenta/SaveShard/assets/70714721/644f45ca-7e6c-4db3-a137-659c1c9d4ded)
 
 ## How to
 
