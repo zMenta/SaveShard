@@ -13,7 +13,7 @@ It's not necessary to modify your game whatsoever. SaveShard *won't modify your 
 
 If you prefer a video version:  *TODO*
 
-### 1. Set up your Stoneshard save directory.
+### Set up your Stoneshard save directory.
 The first thing you need to do is set up your Stoneshard save directory.
 
 #### Go to the **settings tab**.
