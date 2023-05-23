@@ -15,7 +15,7 @@ run/main_scene="res://main_menu/main_menu.tscn"
 config/features=PackedStringArray("4.0", "GL Compatibility")
 run/max_fps=24
 config/icon="res://saveshard_icon.png"
-config/windows_native_icon="res://saveshard_icon.ico"
+config/windows_native_icon="res://saveshard.ico"
 
 [autoload]
 
