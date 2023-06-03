@@ -12,6 +12,8 @@ It's not necessary to modify your game whatsoever. SaveShard *won't modify your 
 # How to
 [Video Version](https://www.youtube.com/watch?v=mXeKeV4x_Ng)
 
+[Steam Guide](https://steamcommunity.com/sharedfiles/filedetails/?id=2979829503)
+
 ## 1. Set up your Stoneshard save directory.
 1. Go to the **settings** tab;
 2. Press select directory;
