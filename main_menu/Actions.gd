@@ -99,6 +99,8 @@ func _copy_dir_files(from: String, to: String) -> Error:
 
 func _on_option_button_item_selected(index):
 	current_character = option_button.get_item_text(index)
+	Config.set_value("system", "last_used_character", current_character)
+	Config.save()
 
 
 func _on_refresh_button_pressed() -> void:
