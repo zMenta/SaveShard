@@ -62,3 +62,7 @@ func _on_tab_container_tab_changed(_tab):
 func _log_message(message: String) -> void:
 	push_warning(message)
 	errors.append(message)
+
+func _on_refresh_button_pressed() -> void:
+	_load_config()
+

@@ -82,4 +82,8 @@ func _on_option_button_item_selected(index):
 	current_character = option_button.get_item_text(index)
 
 
+func _on_refresh_button_pressed() -> void:
+	log_label.text = "Files refreshed"
+	widget.animation.play("ok_message")
+	animation.play("sucess_log")
 
