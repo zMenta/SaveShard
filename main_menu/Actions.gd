@@ -26,8 +26,8 @@ func _load_config() -> void:
 		push_error("Error: Was not able to load confg data")
 		return
 
-	is_backup_automated = Config.get_value("settings", "automatic_backup")
-	is_insert_automated = Config.get_value("settings", "automatic_insert")
+	is_backup_automated = Config.get_value("settings", "automatic_backup", false)
+	is_insert_automated = Config.get_value("settings", "automatic_insert", false)
 
 func _on_save_button_pressed():
 	if not DirAccess.dir_exists_absolute(Config.get_value("settings", "save_directory", "user://") + "/" + save_folder_name):
