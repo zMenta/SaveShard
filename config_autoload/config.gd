@@ -1,5 +1,7 @@
 extends Node
 
+signal config_changed
+
 var config_path := "user://settings.cfg"
 var data := ConfigFile.new()
 
@@ -26,4 +28,6 @@ func load_data() -> Error:
 	return data.load(config_path)
 
 func save() -> Error:
-	return data.save(config_path)
+	var error: Error = data.save(config_path)
+	config_changed.emit()
+	return error

@@ -19,6 +19,7 @@ func _ready():
 	await widget.ready
 	widget.button_save.pressed.connect(_on_save_button_pressed)
 	widget.button_insert.pressed.connect(_on_insert_button_pressed)
+	Config.config_changed.connect(_load_config)
 	_load_config()
 
 func _load_config() -> void:
