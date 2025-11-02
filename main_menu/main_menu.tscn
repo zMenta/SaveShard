@@ -234,7 +234,6 @@ layout_mode = 2
 
 [node name="DummyLabel2" type="Label" parent="MarginContainer/TabContainer/SaveShard/VBoxContainer/FloatingWindow/WindowContainer"]
 layout_mode = 2
-text = "fdasfsda"
 
 [node name="Label" type="Label" parent="MarginContainer/TabContainer/SaveShard/VBoxContainer/FloatingWindow/WindowContainer"]
 layout_mode = 2
