@@ -12,6 +12,8 @@ func _ready():
 func create_config_default() -> void:
 	data.set_value("settings", "stoneshard_directory", "")
 	data.set_value("settings", "save_directory", "user://")
+	data.set_value("settings", "automatic_backup", false)
+	data.set_value("settings", "automatic_insert", false)
 	data.save(config_path)
 
 func set_value(section: String, key: String , value: Variant) -> void:		

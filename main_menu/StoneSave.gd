@@ -17,7 +17,10 @@ func _load_config() -> void:
 	$VBoxContainer.hide()
 	character_option_button.clear()
 
-	if Config.load_data() != OK: return
+	if Config.load_data() != OK:
+		push_error("Error: Was not able to load confg data")
+		return
+
 	var stone_path = Config.get_value("settings", "stoneshard_directory")
 	var dirs = DirAccess.get_directories_at(stone_path + SUFFIX)
 	
@@ -65,4 +68,3 @@ func _log_message(message: String) -> void:
 
 func _on_refresh_button_pressed() -> void:
 	_load_config()
-

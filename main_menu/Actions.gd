@@ -4,19 +4,31 @@ extends VBoxContainer
 @onready var option_button := $"../CharacterSelection/OptionButton"
 @onready var log_label := $LogLabel
 @onready var animation := $AnimationPlayer
+@onready var automatic_timer: Timer = %AutomaticOperationTimer
 
 var config_path := "user://settings.cfg"
 var save_folder_name := "saveshard_saves"
 var save_path : String
 var current_character := "character_1"
+var is_backup_automated: bool = false
+var is_insert_automated: bool = false
+var timer_swap: bool = true
 
 func _ready():
 	save_path = Config.get_value("settings", "save_directory", "user://") + save_folder_name
 	await widget.ready
 	widget.button_save.pressed.connect(_on_save_button_pressed)
 	widget.button_insert.pressed.connect(_on_insert_button_pressed)
-	
-	
+	_load_config()
+
+func _load_config() -> void:
+	if Config.load_data() != OK:
+		push_error("Error: Was not able to load confg data")
+		return
+
+	is_backup_automated = Config.get_value("settings", "automatic_backup")
+	is_insert_automated = Config.get_value("settings", "automatic_insert")
+
 func _on_save_button_pressed():
 	if not DirAccess.dir_exists_absolute(Config.get_value("settings", "save_directory", "user://") + "/" + save_folder_name):
 		DirAccess.make_dir_absolute(Config.get_value("settings", "save_directory", "user://") + "/" + save_folder_name)
@@ -47,7 +59,7 @@ func _on_save_button_pressed():
 		animation.play("error_log")			
 		return
 
-	log_label.text = "Exitsave copied with sucess"
+	log_label.text = "%s: Exitsave copied with sucess" % current_character
 	widget.animation.play("ok_message")
 	animation.play("sucess_log")
 
@@ -72,7 +84,7 @@ func _on_insert_button_pressed():
 		DirAccess.make_dir_absolute(char_save_path)
 		
 	if _copy_dir_files(backup_path, char_save_path) != OK: return
-	log_label.text = "Exitsave Inserted with sucess"
+	log_label.text = "%s: Exitsave Inserted with sucess" % current_character
 	widget.animation.play("ok_message")
 	animation.play("sucess_log")
 
@@ -93,3 +105,13 @@ func _on_refresh_button_pressed() -> void:
 	widget.animation.play("ok_message")
 	animation.play("sucess_log")
 
+
+func _on_automatic_operation_timer_timeout() -> void:
+	if timer_swap:
+		if is_backup_automated:
+			_on_save_button_pressed()
+	else:
+		if is_insert_automated:
+			_on_insert_button_pressed()
+
+	timer_swap = not timer_swap

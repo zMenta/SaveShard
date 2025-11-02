@@ -198,6 +198,10 @@ libraries = {
 &"": SubResource("AnimationLibrary_wyfpe")
 }
 
+[node name="AutomaticOperationTimer" type="Timer" parent="MarginContainer/TabContainer/SaveShard/VBoxContainer/Actions"]
+unique_name_in_owner = true
+autostart = true
+
 [node name="HSeparator2" type="HSeparator" parent="MarginContainer/TabContainer/SaveShard/VBoxContainer"]
 layout_mode = 2
 
@@ -480,6 +484,7 @@ text = "V 0.1.2"
 [connection signal="pressed" from="MarginContainer/TabContainer/SaveShard/VBoxContainer/Actions/HBoxContainer/InsertButton" to="MarginContainer/TabContainer/SaveShard/VBoxContainer/Actions" method="_on_insert_button_pressed"]
 [connection signal="pressed" from="MarginContainer/TabContainer/SaveShard/VBoxContainer/Actions/HBoxContainer/RefreshButton" to="MarginContainer/TabContainer/SaveShard" method="_on_refresh_button_pressed"]
 [connection signal="pressed" from="MarginContainer/TabContainer/SaveShard/VBoxContainer/Actions/HBoxContainer/RefreshButton" to="MarginContainer/TabContainer/SaveShard/VBoxContainer/Actions" method="_on_refresh_button_pressed"]
+[connection signal="timeout" from="MarginContainer/TabContainer/SaveShard/VBoxContainer/Actions/AutomaticOperationTimer" to="MarginContainer/TabContainer/SaveShard/VBoxContainer/Actions" method="_on_automatic_operation_timer_timeout"]
 [connection signal="pressed" from="MarginContainer/TabContainer/SaveShard/VBoxContainer/FloatingWindow/WindowButton" to="MarginContainer/TabContainer/SaveShard/VBoxContainer/FloatingWindow" method="_on_window_button_pressed"]
 [connection signal="toggled" from="MarginContainer/TabContainer/SaveShard/VBoxContainer/FloatingWindow/WindowContainer/HBoxContainer/VBoxContainer2/BordlessCheck" to="MarginContainer/TabContainer/SaveShard/VBoxContainer/FloatingWindow" method="_on_bordless_check_toggled"]
 [connection signal="value_changed" from="MarginContainer/TabContainer/SaveShard/VBoxContainer/FloatingWindow/WindowContainer/HBoxContainer/VBoxContainer2/HSlider" to="MarginContainer/TabContainer/SaveShard/VBoxContainer/FloatingWindow" method="_on_h_slider_value_changed"]
