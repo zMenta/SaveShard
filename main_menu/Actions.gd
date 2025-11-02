@@ -25,7 +25,7 @@ func _on_save_button_pressed():
 	var exitsave_path : String = stoneshard_path + "/characters_v1/" + current_character + "/exitsave_1"
 	
 	if not DirAccess.dir_exists_absolute(exitsave_path):
-		log_label.text = "Error: Exitsave don't exist."
+		log_label.text = "Error: Exitsave %s don't exist." % exitsave_path
 		widget.animation.play("error_message")		
 		animation.play("error_log")
 		return
@@ -49,14 +49,14 @@ func _on_save_button_pressed():
 func _on_insert_button_pressed():
 	var backup_path : String = Config.get_value("settings", "save_directory", "user://") + "/" + save_folder_name + "/" + current_character
 	if not DirAccess.dir_exists_absolute(backup_path):
-		log_label.text = "Error: No save directory found with this character"
+		log_label.text = "Error: No save directory %s found with this character" % backup_path
 		widget.animation.play("error_message")
 		animation.play("error_log")
 		return
 	
 	var files = DirAccess.get_files_at(backup_path)
 	if len(files) < 3:
-		log_label.text = "Error reading backup save files"
+		log_label.text = "Error reading backup save files at %s" % backup_path
 		widget.animation.play("error_message")
 		animation.play("error_log")
 		return
@@ -82,4 +82,8 @@ func _on_option_button_item_selected(index):
 	current_character = option_button.get_item_text(index)
 
 
+func _on_refresh_button_pressed() -> void:
+	log_label.text = "Files refreshed"
+	widget.animation.play("ok_message")
+	animation.play("sucess_log")
 

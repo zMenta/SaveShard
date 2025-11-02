@@ -12,10 +12,11 @@ config_version=5
 
 config/name="SaveShard"
 run/main_scene="res://main_menu/main_menu.tscn"
-config/features=PackedStringArray("4.0", "GL Compatibility")
+config/features=PackedStringArray("4.5", "GL Compatibility")
 run/max_fps=24
-boot_splash/image="res://saveshard_icon.png"
+run/low_processor_mode=true
 boot_splash/fullsize=false
+boot_splash/image="res://saveshard_icon.png"
 config/icon="res://saveshard_icon.png"
 config/macos_native_icon="res://saveshard_icon.png"
 config/windows_native_icon="res://saveshard.ico"
