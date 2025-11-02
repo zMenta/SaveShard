@@ -1,10 +1,10 @@
 [gd_scene load_steps=19 format=3 uid="uid://drt8wk4erwbun"]
 
-[ext_resource type="Script" path="res://main_menu/Settings.gd" id="1_0e56h"]
+[ext_resource type="Script" uid="uid://d2wu4fpa8f4d2" path="res://main_menu/Settings.gd" id="1_0e56h"]
 [ext_resource type="Texture2D" uid="uid://bsnpesqju2q82" path="res://assets/coffee.svg" id="1_khllr"]
-[ext_resource type="Script" path="res://main_menu/StoneSave.gd" id="1_ojeiy"]
-[ext_resource type="Script" path="res://main_menu/Actions.gd" id="2_m7rd4"]
-[ext_resource type="Script" path="res://main_menu/FloatingWindow.gd" id="2_vf80d"]
+[ext_resource type="Script" uid="uid://b5ww17bpro1j0" path="res://main_menu/StoneSave.gd" id="1_ojeiy"]
+[ext_resource type="Script" uid="uid://mp07y167bv2j" path="res://main_menu/Actions.gd" id="2_m7rd4"]
+[ext_resource type="Script" uid="uid://bb111cfr25pk8" path="res://main_menu/FloatingWindow.gd" id="2_vf80d"]
 [ext_resource type="PackedScene" uid="uid://dqhll4wtf0ak6" path="res://save_widget/save_widget.tscn" id="3_0pxf3"]
 [ext_resource type="Texture2D" uid="uid://bt35s2mf5oqr3" path="res://assets/save.svg" id="3_1tc5f"]
 [ext_resource type="Texture2D" uid="uid://bb184qtlyr7w4" path="res://assets/upload.svg" id="4_ajeu6"]
@@ -64,9 +64,9 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wyfpe"]
 _data = {
-"RESET": SubResource("Animation_2t76f"),
-"error_log": SubResource("Animation_3lb70"),
-"sucess_log": SubResource("Animation_ito4k")
+&"RESET": SubResource("Animation_2t76f"),
+&"error_log": SubResource("Animation_3lb70"),
+&"sucess_log": SubResource("Animation_ito4k")
 }
 
 [node name="MainMenu" type="PanelContainer"]
@@ -82,6 +82,7 @@ layout_mode = 2
 [node name="TabContainer" type="TabContainer" parent="MarginContainer"]
 layout_mode = 2
 tab_alignment = 1
+current_tab = 0
 
 [node name="SaveShard" type="MarginContainer" parent="MarginContainer/TabContainer"]
 layout_mode = 2
@@ -90,6 +91,7 @@ theme_override_constants/margin_top = 30
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 30
 script = ExtResource("1_ojeiy")
+metadata/_tab_index = 0
 
 [node name="ErrorLabel" type="Label" parent="MarginContainer/TabContainer/SaveShard"]
 visible = false
@@ -153,10 +155,20 @@ expand_icon = true
 [node name="LogLabel" type="Label" parent="MarginContainer/TabContainer/SaveShard/VBoxContainer/Actions"]
 layout_mode = 2
 horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="LogErrorLabel" type="Label" parent="MarginContainer/TabContainer/SaveShard/VBoxContainer/Actions"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.913725, 0, 0.0352941, 1)
+text = "
+"
+horizontal_alignment = 1
+autowrap_mode = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="MarginContainer/TabContainer/SaveShard/VBoxContainer/Actions"]
 libraries = {
-"": SubResource("AnimationLibrary_wyfpe")
+&"": SubResource("AnimationLibrary_wyfpe")
 }
 
 [node name="HSeparator2" type="HSeparator" parent="MarginContainer/TabContainer/SaveShard/VBoxContainer"]
@@ -277,6 +289,7 @@ theme_override_constants/margin_top = 30
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 30
 script = ExtResource("1_0e56h")
+metadata/_tab_index = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/TabContainer/Settings"]
 layout_mode = 2
@@ -381,8 +394,8 @@ text = "directory name"
 layout_mode = 2
 
 [node name="StoneDirectory" type="FileDialog" parent="MarginContainer/TabContainer/Settings"]
-initial_position = 1
 title = "Open a Directory"
+initial_position = 1
 size = Vector2i(676, 508)
 ok_button_text = "Select Current Folder"
 file_mode = 2
@@ -390,8 +403,8 @@ access = 2
 show_hidden_files = true
 
 [node name="SaveDirectory" type="FileDialog" parent="MarginContainer/TabContainer/Settings"]
-initial_position = 1
 title = "Open a Directory"
+initial_position = 1
 size = Vector2i(676, 508)
 ok_button_text = "Select Current Folder"
 file_mode = 2
@@ -431,7 +444,7 @@ layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
 theme_override_font_sizes/font_size = 10
-text = "V 0.1.1 "
+text = "V 0.1.2"
 
 [connection signal="tab_changed" from="MarginContainer/TabContainer" to="MarginContainer/TabContainer/SaveShard" method="_on_tab_container_tab_changed"]
 [connection signal="item_selected" from="MarginContainer/TabContainer/SaveShard/VBoxContainer/CharacterSelection/OptionButton" to="MarginContainer/TabContainer/SaveShard/VBoxContainer/Actions" method="_on_option_button_item_selected"]
