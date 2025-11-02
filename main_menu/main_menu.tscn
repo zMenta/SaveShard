@@ -168,6 +168,7 @@ autowrap_mode = 3
 
 [node name="LogErrorLabel" type="Label" parent="MarginContainer/TabContainer/SaveShard/VBoxContainer/Actions"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 theme_override_colors/font_color = Color(0.913725, 0, 0.0352941, 1)
 text = "
