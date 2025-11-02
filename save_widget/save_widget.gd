@@ -2,6 +2,7 @@ extends Window
 
 @export var ok_icon: Texture2D
 @export var error_icon: Texture2D
+@export var warning_icon: Texture2D
 
 @onready var button_save := $Panel/HBoxContainer/SaveButton
 @onready var button_insert := $Panel/HBoxContainer/InsertButton
@@ -23,3 +24,6 @@ func _set_ok_icon() -> void:
 
 func _set_error_icon() -> void:
 	log_texture.texture = error_icon
+
+func _set_warning_icon() -> void:
+	log_texture.texture = warning_icon

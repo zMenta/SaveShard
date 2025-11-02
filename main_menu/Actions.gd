@@ -22,10 +22,11 @@ func _on_save_button_pressed():
 		DirAccess.make_dir_absolute(Config.get_value("settings", "save_directory", "user://") + "/" + save_folder_name)
 	
 	var stoneshard_path = Config.get_value("settings", "stoneshard_directory")
-	var exitsave_path : String = stoneshard_path + "/characters_v1/" + current_character + "/exitsave_1"
+	var exitsave_path: String = stoneshard_path + "/characters_v1/" + current_character + "/exitsave_1"
+	var exitsave_files: PackedStringArray = DirAccess.get_files_at(exitsave_path)
 	
 	if not DirAccess.dir_exists_absolute(exitsave_path):
-		log_label.text = "Error: Exitsave %s don't exist." % exitsave_path
+		log_label.text = "Error: Exitsave directory %s don't exist." % exitsave_path
 		widget.animation.play("error_message")		
 		animation.play("error_log")
 		return
@@ -34,6 +35,11 @@ func _on_save_button_pressed():
 	if not DirAccess.dir_exists_absolute(character_save_path):
 		DirAccess.make_dir_absolute(character_save_path)
 	
+	if exitsave_files.size() == 0:
+		log_label.text = "No exitsave found for '%s'" % current_character
+		widget.animation.play("warning_message")		
+		animation.play("warning_log")
+		return
 	
 	if _copy_dir_files(exitsave_path, character_save_path) != OK:
 		log_label.text = "An error occured when copying save files"
