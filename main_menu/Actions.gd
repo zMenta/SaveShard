@@ -12,7 +12,6 @@ var save_path : String
 var current_character := "character_1"
 var is_backup_automated: bool = false
 var is_insert_automated: bool = false
-var timer_swap: bool = true
 
 func _ready():
 	save_path = Config.get_value("settings", "save_directory", "user://") + save_folder_name
@@ -110,11 +109,8 @@ func _on_refresh_button_pressed() -> void:
 
 
 func _on_automatic_operation_timer_timeout() -> void:
-	if timer_swap:
-		if is_backup_automated:
-			_on_save_button_pressed()
-	else:
-		if is_insert_automated:
-			_on_insert_button_pressed()
+	if is_backup_automated:
+		_on_save_button_pressed()
 
-	timer_swap = not timer_swap
+	if is_insert_automated:
+		_on_insert_button_pressed()
