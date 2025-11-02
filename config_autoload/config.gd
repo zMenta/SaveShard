@@ -16,7 +16,7 @@ func create_config_default() -> void:
 	data.set_value("settings", "save_directory", "user://")
 	data.set_value("settings", "automatic_backup", false)
 	data.set_value("settings", "automatic_insert", false)
-	data.set_value("behaviour", "last_used_character", "character_1")
+	data.set_value("system", "last_used_character", "character_1")
 	data.save(config_path)
 
 func set_value(section: String, key: String , value: Variant) -> void:		
