@@ -437,6 +437,14 @@ layout_mode = 2
 text = "Automatic Operation"
 horizontal_alignment = 1
 
+[node name="Label3" type="Label" parent="MarginContainer/TabContainer/Settings/VBoxContainer/AutomaticOperation"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.972549, 0.88235295, 0, 1)
+theme_override_font_sizes/font_size = 14
+text = "Note: Experimental feature, please only enable the \"Automatic Backups\" if you have issues with this feature."
+horizontal_alignment = 1
+autowrap_mode = 3
+
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/TabContainer/Settings/VBoxContainer/AutomaticOperation"]
 layout_mode = 2
 theme = SubResource("Theme_n70vs")

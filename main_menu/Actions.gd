@@ -29,7 +29,7 @@ func _load_config() -> void:
 	is_backup_automated = Config.get_value("settings", "automatic_backup", false)
 	is_insert_automated = Config.get_value("settings", "automatic_insert", false)
 
-func _on_save_button_pressed():
+func _on_save_button_pressed(enable_widget_message: bool = true):
 	if not DirAccess.dir_exists_absolute(Config.get_value("settings", "save_directory", "user://") + "/" + save_folder_name):
 		DirAccess.make_dir_absolute(Config.get_value("settings", "save_directory", "user://") + "/" + save_folder_name)
 	
@@ -39,7 +39,7 @@ func _on_save_button_pressed():
 	
 	if not DirAccess.dir_exists_absolute(exitsave_path):
 		log_label.text = "Error: Exitsave directory %s don't exist." % exitsave_path
-		widget.animation.play("error_message")		
+		if enable_widget_message: widget.animation.play("error_message")		
 		animation.play("error_log")
 		return
 		
@@ -49,33 +49,33 @@ func _on_save_button_pressed():
 	
 	if exitsave_files.size() == 0:
 		log_label.text = "No exitsave found for '%s'" % current_character
-		widget.animation.play("warning_message")		
+		if enable_widget_message: widget.animation.play("warning_message")		
 		animation.play("warning_log")
 		return
 	
 	if _copy_dir_files(exitsave_path, character_save_path) != OK:
 		log_label.text = "An error occured when copying save files"
-		widget.animation.play("error_message")	
+		if enable_widget_message: widget.animation.play("error_message")	
 		animation.play("error_log")			
 		return
 
 	log_label.text = "%s: Exitsave copied with sucess" % current_character
-	widget.animation.play("ok_message")
+	if enable_widget_message: widget.animation.play("ok_message")
 	animation.play("sucess_log")
 
 
-func _on_insert_button_pressed():
+func _on_insert_button_pressed(enable_widget_message: bool = true):
 	var backup_path : String = Config.get_value("settings", "save_directory", "user://") + "/" + save_folder_name + "/" + current_character
 	if not DirAccess.dir_exists_absolute(backup_path):
 		log_label.text = "Error: No save directory %s found with this character" % backup_path
-		widget.animation.play("error_message")
+		if enable_widget_message: widget.animation.play("error_message")
 		animation.play("error_log")
 		return
 	
 	var files = DirAccess.get_files_at(backup_path)
 	if len(files) < 3:
 		log_label.text = "Error reading backup save files at %s" % backup_path
-		widget.animation.play("error_message")
+		if enable_widget_message: widget.animation.play("error_message")
 		animation.play("error_log")
 		return
 	
@@ -85,7 +85,7 @@ func _on_insert_button_pressed():
 		
 	if _copy_dir_files(backup_path, char_save_path) != OK: return
 	log_label.text = "%s: Exitsave Inserted with sucess" % current_character
-	widget.animation.play("ok_message")
+	if enable_widget_message: widget.animation.play("ok_message")
 	animation.play("sucess_log")
 
 
@@ -110,7 +110,7 @@ func _on_refresh_button_pressed() -> void:
 
 func _on_automatic_operation_timer_timeout() -> void:
 	if is_backup_automated:
-		_on_save_button_pressed()
+		_on_save_button_pressed(false)
 
 	if is_insert_automated:
-		_on_insert_button_pressed()
+		_on_insert_button_pressed(false)
