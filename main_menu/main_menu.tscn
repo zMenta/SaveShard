@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://drt8wk4erwbun"]
+[gd_scene load_steps=23 format=3 uid="uid://drt8wk4erwbun"]
 
 [ext_resource type="Script" uid="uid://d2wu4fpa8f4d2" path="res://main_menu/Settings.gd" id="1_0e56h"]
 [ext_resource type="Texture2D" uid="uid://bsnpesqju2q82" path="res://assets/coffee.svg" id="1_khllr"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://biks0fe887rr8" path="res://assets/arrow-down-left.svg" id="8_qjhe4"]
 [ext_resource type="Texture2D" uid="uid://bjsnkp5cj5xni" path="res://assets/square.svg" id="8_uptwx"]
 [ext_resource type="Texture2D" uid="uid://dih13oy4gu4w0" path="res://assets/arrow-down-right.svg" id="9_e3ir1"]
+[ext_resource type="Theme" uid="uid://c3id8ay10mnkf" path="res://assets/themes/check_box_theme.tres" id="15_tr6y3"]
 
 [sub_resource type="Animation" id="Animation_2t76f"]
 length = 0.001
@@ -63,12 +64,32 @@ tracks/0/keys = {
 "values": [Color(0.12549, 0.72549, 0, 1), Color(0.12549, 0.72549, 0, 1), Color(0.12549, 0.72549, 0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_n70vs"]
+resource_name = "warning_log"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LogLabel:theme_override_colors/font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.6, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 0.8666667, 0, 1), Color(1, 0.8666667, 0, 1), Color(1, 0.8666667, 0, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wyfpe"]
 _data = {
 &"RESET": SubResource("Animation_2t76f"),
 &"error_log": SubResource("Animation_3lb70"),
-&"sucess_log": SubResource("Animation_ito4k")
+&"sucess_log": SubResource("Animation_ito4k"),
+&"warning_log": SubResource("Animation_n70vs")
 }
+
+[sub_resource type="Theme" id="Theme_n70vs"]
+CheckBox/icons/unchecked = null
 
 [node name="MainMenu" type="PanelContainer"]
 anchors_preset = 15
@@ -180,6 +201,10 @@ autowrap_mode = 3
 libraries = {
 &"": SubResource("AnimationLibrary_wyfpe")
 }
+
+[node name="AutomaticOperationTimer" type="Timer" parent="MarginContainer/TabContainer/SaveShard/VBoxContainer/Actions"]
+unique_name_in_owner = true
+autostart = true
 
 [node name="HSeparator2" type="HSeparator" parent="MarginContainer/TabContainer/SaveShard/VBoxContainer"]
 layout_mode = 2
@@ -403,6 +428,44 @@ text = "directory name"
 [node name="HSeparator3" type="HSeparator" parent="MarginContainer/TabContainer/Settings/VBoxContainer"]
 layout_mode = 2
 
+[node name="AutomaticOperation" type="VBoxContainer" parent="MarginContainer/TabContainer/Settings/VBoxContainer"]
+layout_mode = 2
+tooltip_text = "Automatically tries to backup and or insert the exitsaves from the selected Character. It happens every 1 second."
+
+[node name="Label2" type="Label" parent="MarginContainer/TabContainer/Settings/VBoxContainer/AutomaticOperation"]
+layout_mode = 2
+text = "Automatic Operation"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="MarginContainer/TabContainer/Settings/VBoxContainer/AutomaticOperation"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.972549, 0.88235295, 0, 1)
+theme_override_font_sizes/font_size = 14
+text = "Note: Experimental feature, please only enable the \"Automatic Backups\" if you have issues with this feature."
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/TabContainer/Settings/VBoxContainer/AutomaticOperation"]
+layout_mode = 2
+theme = SubResource("Theme_n70vs")
+theme_override_constants/separation = 10
+
+[node name="AutoBackupCheckBox" type="CheckBox" parent="MarginContainer/TabContainer/Settings/VBoxContainer/AutomaticOperation/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("15_tr6y3")
+text = "Automatically Backup Exitsaves"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/TabContainer/Settings/VBoxContainer/AutomaticOperation"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="AutoInsertCheckBox" type="CheckBox" parent="MarginContainer/TabContainer/Settings/VBoxContainer/AutomaticOperation/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("15_tr6y3")
+text = "Automatically Insert Exitsaves"
+
 [node name="StoneDirectory" type="FileDialog" parent="MarginContainer/TabContainer/Settings"]
 title = "Open a Directory"
 initial_position = 1
@@ -454,7 +517,7 @@ layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
 theme_override_font_sizes/font_size = 10
-text = "V 0.1.2"
+text = "V 0.2"
 
 [connection signal="tab_changed" from="MarginContainer/TabContainer" to="MarginContainer/TabContainer/SaveShard" method="_on_tab_container_tab_changed"]
 [connection signal="item_selected" from="MarginContainer/TabContainer/SaveShard/VBoxContainer/CharacterSelection/OptionButton" to="MarginContainer/TabContainer/SaveShard/VBoxContainer/Actions" method="_on_option_button_item_selected"]
@@ -462,6 +525,7 @@ text = "V 0.1.2"
 [connection signal="pressed" from="MarginContainer/TabContainer/SaveShard/VBoxContainer/Actions/HBoxContainer/InsertButton" to="MarginContainer/TabContainer/SaveShard/VBoxContainer/Actions" method="_on_insert_button_pressed"]
 [connection signal="pressed" from="MarginContainer/TabContainer/SaveShard/VBoxContainer/Actions/HBoxContainer/RefreshButton" to="MarginContainer/TabContainer/SaveShard" method="_on_refresh_button_pressed"]
 [connection signal="pressed" from="MarginContainer/TabContainer/SaveShard/VBoxContainer/Actions/HBoxContainer/RefreshButton" to="MarginContainer/TabContainer/SaveShard/VBoxContainer/Actions" method="_on_refresh_button_pressed"]
+[connection signal="timeout" from="MarginContainer/TabContainer/SaveShard/VBoxContainer/Actions/AutomaticOperationTimer" to="MarginContainer/TabContainer/SaveShard/VBoxContainer/Actions" method="_on_automatic_operation_timer_timeout"]
 [connection signal="pressed" from="MarginContainer/TabContainer/SaveShard/VBoxContainer/FloatingWindow/WindowButton" to="MarginContainer/TabContainer/SaveShard/VBoxContainer/FloatingWindow" method="_on_window_button_pressed"]
 [connection signal="toggled" from="MarginContainer/TabContainer/SaveShard/VBoxContainer/FloatingWindow/WindowContainer/HBoxContainer/VBoxContainer2/BordlessCheck" to="MarginContainer/TabContainer/SaveShard/VBoxContainer/FloatingWindow" method="_on_bordless_check_toggled"]
 [connection signal="value_changed" from="MarginContainer/TabContainer/SaveShard/VBoxContainer/FloatingWindow/WindowContainer/HBoxContainer/VBoxContainer2/HSlider" to="MarginContainer/TabContainer/SaveShard/VBoxContainer/FloatingWindow" method="_on_h_slider_value_changed"]
@@ -474,5 +538,7 @@ text = "V 0.1.2"
 [connection signal="pressed" from="MarginContainer/TabContainer/Settings/VBoxContainer/ClearData" to="MarginContainer/TabContainer/Settings" method="_on_clear_data_pressed"]
 [connection signal="pressed" from="MarginContainer/TabContainer/Settings/VBoxContainer/StoneDirectory/HBoxContainer/DirButton" to="MarginContainer/TabContainer/Settings" method="_on_dir_button_pressed"]
 [connection signal="pressed" from="MarginContainer/TabContainer/Settings/VBoxContainer/BackupDirectory/HBoxContainer/SaveDirButton" to="MarginContainer/TabContainer/Settings" method="_on_save_dir_button_pressed"]
+[connection signal="toggled" from="MarginContainer/TabContainer/Settings/VBoxContainer/AutomaticOperation/HBoxContainer/AutoBackupCheckBox" to="MarginContainer/TabContainer/Settings" method="_on_auto_backup_check_box_toggled"]
+[connection signal="toggled" from="MarginContainer/TabContainer/Settings/VBoxContainer/AutomaticOperation/HBoxContainer2/AutoInsertCheckBox" to="MarginContainer/TabContainer/Settings" method="_on_auto_insert_check_box_toggled"]
 [connection signal="dir_selected" from="MarginContainer/TabContainer/Settings/StoneDirectory" to="MarginContainer/TabContainer/Settings" method="_on_file_dialog_dir_selected"]
 [connection signal="dir_selected" from="MarginContainer/TabContainer/Settings/SaveDirectory" to="MarginContainer/TabContainer/Settings" method="_on_save_directory_dir_selected"]

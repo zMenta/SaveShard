@@ -5,6 +5,8 @@ extends MarginContainer
 @onready var stone_file_dialog := $StoneDirectory
 @onready var save_file_dialog := $SaveDirectory
 @onready var warning_label := $VBoxContainer/StoneDirectory/WarningLabel
+@onready var auto_backup_check_box: CheckBox = %AutoBackupCheckBox
+@onready var auto_insert_check_box: CheckBox = %AutoInsertCheckBox
 
 
 func _ready():
@@ -33,7 +35,9 @@ func _load_config() -> void:
 	if save_directory != "user://":
 		save_dir_name.text = save_directory
 		save_file_dialog.current_dir = save_directory
-	
+
+	auto_backup_check_box.button_pressed = Config.get_value("settings", "automatic_backup", false)
+	auto_insert_check_box.button_pressed = Config.get_value("settings", "automatic_insert", false)
 
 
 func _on_dir_button_pressed():
@@ -58,12 +62,16 @@ func _on_save_directory_dir_selected(dir):
 	Config.set_value("settings", "save_directory", dir)
 	Config.save()
 
+func _on_auto_insert_check_box_toggled(toggled_on: bool) -> void:
+	Config.set_value("settings", "automatic_insert", toggled_on)
+	Config.save()
+
+func _on_auto_backup_check_box_toggled(toggled_on: bool) -> void:
+	Config.set_value("settings", "automatic_backup", toggled_on)
+	Config.save()
+
 
 func _on_clear_data_pressed():
 	Config.create_config_default()
 	_load_config()
-
-
-
-
 

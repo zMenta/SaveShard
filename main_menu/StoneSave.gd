@@ -17,7 +17,10 @@ func _load_config() -> void:
 	$VBoxContainer.hide()
 	character_option_button.clear()
 
-	if Config.load_data() != OK: return
+	if Config.load_data() != OK:
+		push_error("Error: Was not able to load confg data")
+		return
+
 	var stone_path = Config.get_value("settings", "stoneshard_directory")
 	var dirs = DirAccess.get_directories_at(stone_path + SUFFIX)
 	
@@ -47,6 +50,13 @@ func _load_config() -> void:
 		tex.set_size_override(tex.get_size() * 0.6)
 		character_option_button.add_icon_item(tex, dir)
 	
+	var last_used_character: String = Config.get_value("system", "last_used_character", "character_1")
+	for i in character_option_button.item_count:
+		if last_used_character == character_option_button.get_item_text(i):
+			character_option_button.item_selected.emit(i)
+			character_option_button.selected = i
+			return
+
 	character_option_button.item_selected.emit(0)
 
 	# Not adding the error label logs yet, just hiding it for now.
@@ -65,4 +75,3 @@ func _log_message(message: String) -> void:
 
 func _on_refresh_button_pressed() -> void:
 	_load_config()
-

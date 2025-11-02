@@ -1,5 +1,7 @@
 extends Node
 
+signal config_changed
+
 var config_path := "user://settings.cfg"
 var data := ConfigFile.new()
 
@@ -12,6 +14,9 @@ func _ready():
 func create_config_default() -> void:
 	data.set_value("settings", "stoneshard_directory", "")
 	data.set_value("settings", "save_directory", "user://")
+	data.set_value("settings", "automatic_backup", false)
+	data.set_value("settings", "automatic_insert", false)
+	data.set_value("system", "last_used_character", "character_1")
 	data.save(config_path)
 
 func set_value(section: String, key: String , value: Variant) -> void:		
@@ -24,4 +29,6 @@ func load_data() -> Error:
 	return data.load(config_path)
 
 func save() -> Error:
-	return data.save(config_path)
+	var error: Error = data.save(config_path)
+	config_changed.emit()
+	return error
