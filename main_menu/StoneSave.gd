@@ -32,8 +32,8 @@ func _load_config() -> void:
 		var exitsave_image_path: String = stone_path + SUFFIX + "/" + dir + "/exitsave_1/preview.png"
 		var autosave_image_path: String = stone_path + SUFFIX + "/" + dir + "/autosave_1/preview.png"
 
-		if not FileAccess.file_exists(exitsave_image_path) or not FileAccess.file_exists(autosave_image_path):
-			_log_message("File '%s' or '%s' does not exist, skipping %s" % [exitsave_image_path, autosave_image_path, dir])
+		if not FileAccess.file_exists(exitsave_image_path) and not FileAccess.file_exists(autosave_image_path):
+			_log_message("File '%s' and '%s' does not exist, skipping %s" % [exitsave_image_path, autosave_image_path, dir])
 			continue
 
 		var img = Image.load_from_file(exitsave_image_path)
