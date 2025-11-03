@@ -84,7 +84,7 @@ func _on_insert_button_pressed(enable_widget_message: bool = true):
 		DirAccess.make_dir_absolute(char_save_path)
 		
 	if _copy_dir_files(backup_path, char_save_path) != OK: return
-	log_label.text = "%s: Exitsave Inserted successfully" % current_character
+	log_label.text = "%s: Exitsave inserted successfully" % current_character
 	if enable_widget_message: widget.animation.play("ok_message")
 	animation.play("sucess_log")
 
